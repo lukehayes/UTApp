@@ -1,0 +1,46 @@
+<ion-content>
+  <div class="slct-wrkt-hdr">
+    <ion-title class="ion-text-left">Select Workouts</ion-title>
+    <ion-icon name="close-outline" slot="end" (click)="goBack()"></ion-icon>
+  </div>
+
+  <ion-list>
+    <ion-item
+      style="color: #fff; margin: 20px"
+      *ngFor="let doc of myWorkoutsForSelection; let i = index"
+      detail-push
+    >
+      <ion-checkbox
+        style="margin-right: 10px; margin-left: 10px"
+        dark
+        [checked]="doc.checked"
+        (ionChange)="toggleComponent($event, doc, i)"
+        item-left
+      ></ion-checkbox>
+      <ion-label>{{ doc.title }}</ion-label>
+      <!-- <span (click)="showComponent(doc)" item-right> </span> -->
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <div class="nodata" *ngIf="myWorkoutsForSelection?.length == 0">
+      No workouts found. Go to workout library to create custom workouts.
+    </div>
+  </ion-list>
+
+  <ion-button
+    *ngIf="myWorkoutsForSelection?.length > 0"
+    style="
+      text-align: center;
+      position: relative;
+      /* margin: 10px; */
+      margin-top: 40px;
+      display: flex;
+      margin-left: 10px;
+      margin-right: 10px;
+    "
+    (click)="submit()"
+  >
+    Submit
+  </ion-button>
+</ion-content>

@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-back-button
+      text=""
+      icon="chevron-back-outline"
+      slot="start"
+      routerLink="/choose-workout-type"
+    ></ion-back-button>
+    <ion-title class="ion-text-center">Workout Preferences</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div checkboxsec>
+    <div checkboxlist>
+      <div checkboxinner *ngFor="let doc of workout_preferences;let i = index;">
+        <input
+          type="checkbox"
+          id="checkbox{{i}}"
+          name="checkbox"
+          style="display: none"
+          value="{{doc.value}}"
+          (change)="selectPreference($event, i)"
+        />
+        <label colorbg1 for="checkbox{{i}}"
+          ><img iconleft src="assets/img/{{doc.image}}" />
+          {{doc.displayName}}
+          <span checkboxbtn><ion-icon name="checkmark-outline"></ion-icon></span
+        ></label>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-button (click)="submit()" color="primary" shape="round" expand="full">
+    Continue
+  </ion-button>
+</ion-footer>

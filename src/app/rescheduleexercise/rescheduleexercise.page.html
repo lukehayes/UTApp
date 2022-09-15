@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-back-button
+      slot="start"
+      routerLink="/tabs/calender"
+      text=""
+      icon="chevron-back-outline"
+    ></ion-back-button>
+    <ion-title class="ion-text-center">Reschedule Exercise</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-label heading>
+    <h2>Select Date</h2>
+  </ion-label>
+  <div formgroup mb15>
+    <ion-item lines="none" class="ion-no-padding">
+      <ion-datetime
+        display-timezone="utc"
+        [(ngModel)]="selected_date"
+      ></ion-datetime>
+    </ion-item>
+  </div>
+
+  <ion-list>
+    <ion-card
+      [ngStyle]="{'background': 'url(' + IMAGES_URL + response?.data.exer.image + ') 0% 20% / cover', 'background-size': 'cover'}"
+    >
+      <ion-card-content>
+        <h3>{{response?.data.exer.title}}</h3>
+        <div playbtn>
+          <a href="javascript:void(0)"><ion-icon name="play"></ion-icon></a>
+        </div>
+        <div content-sec>
+          <ul>
+            <li>
+              <img
+                src="assets/img/icon1.png"
+                alt=""
+              />{{response?.data.exer.sets.length}} Sets
+            </li>
+            <li>
+              <img src="assets/img/icon2.png" alt="" />Total Time
+              {{response?.data.exer.duration}} min
+            </li>
+          </ul>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+  <ion-button
+    color="primary"
+    shape="round"
+    expand="full"
+    (click)="ReScheduleExercise()"
+  >
+    Save
+  </ion-button>
+</ion-content>

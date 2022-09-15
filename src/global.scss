@@ -1,0 +1,299 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import "~@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+html,
+body {
+  font-family: "Montserrat", sans-serif !important;
+  --ion-default-font: "Montserrat", sans-serif !important;
+}
+ion-header {
+  ion-toolbar {
+    --min-height: 56px;
+  }
+}
+[pricing-sec] {
+  [pricing-mn] {
+    ion-slides {
+      .swiper-wrapper {
+        align-items: center;
+      }
+    }
+  }
+}
+.ExercisesFilterPage {
+  .modal-wrapper {
+    max-height: 410px;
+    min-height: 410px;
+    margin: 0px 20px;
+    border-radius: 20px;
+  }
+}
+.StartWorkoutPage {
+  .modal-wrapper {
+    height: 100%;
+    // max-height: 690px;
+    // margin: 0px 20px;
+    // border-radius: 20px;
+  }
+}
+[message-sec] {
+  .search {
+    position: relative;
+    ion-searchbar {
+      margin: 0px;
+      padding: 0px;
+      --box-shadow: none;
+      --placeholder-opacity: 1;
+      height: 52px;
+      .searchbar-search-icon {
+        right: 16px;
+        left: auto;
+        color: var(--ion-color-white);
+        top: 0px;
+        bottom: 0px;
+        margin: auto 0px;
+      }
+      .searchbar-input-container {
+        height: 100%;
+        input.searchbar-input {
+          font-size: 14px;
+          background: transparent;
+          color: var(--ion-color-white);
+          border: 1px solid var(--ion-color-white);
+          border-radius: 8px;
+          padding-inline-start: 15px !important;
+          padding-inline-end: 44px !important;
+          padding-top: 10px;
+          padding-bottom: 10px;
+        }
+        .searchbar-clear-button {
+          right: 10px;
+          color: var(--ion-color-white);
+          display: none !important;
+        }
+      }
+    }
+  }
+}
+
+.filtermodal {
+  --max-height: auto;
+  min-height: 400px;
+  height: auto;
+  padding: 15px;
+  .modal-wrapper {
+    --border-radius: 20px;
+    --max-height: 55%;
+    --max-width: 90%;
+    --width: 90%;
+    --height: 70%;
+    top: 20%;
+  }
+}
+
+.md {
+  ion-header {
+    ion-back-button {
+      position: absolute !important;
+      left: 0 !important;
+      z-index: 2 !important;
+    }
+    ion-thumbnail {
+      position: absolute !important;
+      right: 10px !important;
+      z-index: 2 !important;
+    }
+    ion-item {
+      --padding-start: 50px !important;
+    }
+  }
+}
+
+ion-picker {
+  .picker-wrapper {
+    border-radius: 35px 35px 0 0 !important;
+    padding-top: 15px;
+    .picker-toolbar {
+      border-bottom: 0 !important;
+    }
+  }
+  --border-color: transparent !important;
+  .picker-toolbar-cancel {
+    &.picker-toolbar-button {
+      .picker-button {
+        color: #bdc2c4 !important;
+      }
+    }
+  }
+  .picker-toolbar-button {
+    .picker-button {
+      color: var(--ion-color-primary) !important;
+      font-weight: 400 !important;
+      font-size: 16px !important;
+    }
+  }
+}
+
+// Android Css
+.md {
+  .picker-toolbar {
+    justify-content: space-between;
+  }
+  ion-item {
+    --background: transparent;
+  }
+  ion-datetime {
+    color: #000;
+  }
+  ion-picker {
+    --background: #191a1e;
+    color: #fff;
+  }
+  ion-button {
+    height: 52px;
+    font-size: 21px;
+    text-transform: capitalize;
+    box-shadow: none;
+    --box-shadow: none;
+  }
+  form {
+    ion-list {
+      margin-bottom: 0 !important;
+    }
+  }
+}
+
+.popClass {
+  .alert-wrapper {
+    .alert-message {
+      padding-bottom: 0;
+    }
+  }
+}
+
+.popClass1 {
+  .alert-wrapper {
+    .alert-head {
+      padding-bottom: 0;
+      .alert-title {
+        font-size: 18px;
+        line-height: 26px;
+      }
+    }
+  }
+}
+
+[error] {
+  color: red;
+  font-size: 14px;
+  float: left;
+  display: block;
+  // margin-bottom: 15px;
+}
+
+.marginbottom {
+  margin-bottom: 40px;
+}
+.wrkt-exrcs-mdl {
+  .alert-checkbox-label {
+    text-overflow: inherit;
+    white-space: inherit;
+    overflow: visible;
+  }
+  h2 {
+    margin: 0px !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: var(--ion-color-black) !important;
+  }
+}
+.my-workouts-modal {
+  h2 {
+    margin: 0px !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: var(--ion-color-black) !important;
+  }
+  .alert-message {
+    order: 3;
+  }
+  .alert-button-group {
+    order: 4;
+  }
+  .alert-input-group {
+    padding-bottom: 0 !important;
+  }
+}
+ion-modal.SelectWorkoutsPage {
+  --width: calc(100% - 50px);
+  --max-height: calc(100vh - 25%);
+  --border-radius: 15px;
+}
+ion-textarea {
+  textarea {
+    height: 140px !important;
+  }
+}
+
+[login] {
+  overflow-y: auto;
+}
+
+ion-app {
+  margin-top: env(safe-area-inset-top);
+}
+
+ion-header ion-toolbar:first-of-type {
+  padding-top: 0;
+}
+
+.paypal-checkout-sandbox-iframe {
+  border: 0;
+}
+html.plt-ios .paypal-checkout-sandbox-iframe {
+  top: env(safe-area-inset-top) !important;
+}
+[search] {
+  .searchbar-search-icon {
+    display: none !important;
+  }
+  .searchbar-input {
+    padding-inline-start: 0px !important;
+  }
+}
+
+[norecord] {
+  color: #fff;
+  background: #282220;
+  padding: 20px;
+  font-size: 14px;
+  justify-content: center;
+  margin: 0;
+  border-radius: 10px;
+  font-weight: 600;
+  text-align: center;
+}

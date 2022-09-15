@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-back-button
+      text=""
+      icon="chevron-back-outline"
+      slot="start"
+      routerLink="/activitylevel"
+    ></ion-back-button>
+    <ion-title class="ion-text-center">Workout Type</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div checkboxsec>
+    <div checkboxlist>
+      <div checkboxinner>
+        <input
+          type="checkbox"
+          id="checkbox11"
+          name="checkbox"
+          value="home"
+          (change)="selectType($event)"
+        />
+        <label colorbg1 for="checkbox11"
+          ><img iconleft src="assets/img/beginner.png" />
+          Home Workouts
+          <span checkboxbtn><ion-icon name="checkmark-outline"></ion-icon></span
+        ></label>
+      </div>
+      <div checkboxinner>
+        <input
+          type="checkbox"
+          id="checkbox12"
+          name="checkbox"
+          value="gym"
+          (change)="selectType($event)"
+        />
+        <label colorbg2 for="checkbox12"
+          ><img iconleft src="assets/img/intermidiate.png" />
+          Gym Based Workouts
+          <span checkboxbtn><ion-icon name="checkmark-outline"></ion-icon></span
+        ></label>
+      </div>
+
+      <p>With this information, we can gauge your workout interests.</p>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-button (click)="submit()" color="primary" shape="round" expand="full">
+    Continue
+  </ion-button>
+</ion-footer>

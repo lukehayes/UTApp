@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-back-button
+      text=""
+      icon="chevron-back-outline"
+      slot="start"
+      routerLink="/workout-preference"
+    ></ion-back-button>
+    <ion-title class="ion-text-center">Upload Image</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-badge class="skipbutton" (click)="skip()">skip</ion-badge>
+  <div uploadimgsec>
+    <div uploadimage>
+      <div fileupload>
+        <label for="fileupload" (click)="selectImage()">
+          <div uploadinner>
+            <div
+              class="uploadcamera"
+              *ngIf="errors.indexOf(live_image_url) >= 0"
+            >
+              <img
+                src="assets/img/camera-icon.png"
+                *ngIf="errors.indexOf(live_image_url) >= 0"
+              />
+              <h3 *ngIf="errors.indexOf(live_image_url) >= 0">
+                Take a Picture
+              </h3>
+            </div>
+
+            <img
+              class="uploaded"
+              [style.width.px]="200"
+              [style.height.px]="200"
+              *ngIf="errors.indexOf(live_image_url) == -1"
+              [src]="sanitizer.bypassSecurityTrustResourceUrl(win.Ionic.WebView.convertFileSrc(live_image_url))"
+            />
+          </div>
+        </label>
+      </div>
+      <p>Take a Photo or choose from your library</p>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-button
+    (click)="uploadImage()"
+    color="primary"
+    shape="round"
+    expand="full"
+  >
+    Upload
+  </ion-button>
+</ion-footer>

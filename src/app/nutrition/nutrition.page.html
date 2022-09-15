@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-toolbar color="primary">	
+        <ion-title class="ion-text-center">Nutrition</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+	<ion-list>
+		<ion-item lines="none" routerLink="/nutrition-details/{{doc._id}}" *ngFor="let doc of nutritionList; let i = index;">
+			<ion-thumbnail slot="start">
+				<span>
+					<img src="assets/img/noimage.png" alt="" *ngIf="doc.image == ''"/>
+					<img src="{{IMAGES_URL + doc.image}}" alt="" *ngIf="doc.image != ''"/>
+				</span>				
+			</ion-thumbnail>	
+			<ion-label>
+				<h4>{{doc.title}}</h4>
+				<p>{{doc.serving}} Serving . {{doc.cal}} Cal</p>
+			</ion-label>
+			<span class="arrow-ri" slot="end"><ion-icon name="chevron-forward-outline"></ion-icon>  </span>
+		</ion-item>
+		
+	</ion-list>
+</ion-content>

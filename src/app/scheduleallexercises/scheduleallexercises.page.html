@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar  color="primary">
+     <ion-back-button slot="start" routerLink="/tabs/calender" text=""  icon="chevron-back-outline"></ion-back-button>
+     <ion-title class="ion-text-center">Schedule Exercise</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-label heading>
+    <h2>Select Date</h2>
+  </ion-label>
+  <div formgroup mb15>
+    <ion-item lines="none"  class="ion-no-padding">
+      <ion-datetime [(ngModel)]="selected_date" display-timezone="utc"></ion-datetime>
+    </ion-item>
+    <span error *ngIf="errors.indexOf(selected_date) >= 0 && is_submit == true">Please select date</span>
+  </div>
+  
+
+  <ion-label heading>
+    <h2>Workout Selection</h2>
+  </ion-label>
+  <div formgroup>
+    <ion-item lines="none"  class="ion-no-padding">
+      <ion-label style="display: none;">Select</ion-label>
+      <ion-select placeholder="Choose ability" interface="alert" [(ngModel)]="cat_id" (ionChange)="onSelectWorkout($event)">
+        <ion-select-option value="{{doc._id}}" *ngFor="let doc of response?.data; let i = index;"> {{doc.title}} </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </div>
+
+  <ion-label heading>
+    <h2>Program Abilities</h2>
+  </ion-label>
+  <div formgroup>
+    <ion-item lines="none"  class="ion-no-padding">
+      <ion-label style="display: none;">Select</ion-label>
+      <ion-select placeholder="Choose ability" interface="alert" [(ngModel)]="ability_id" (ionChange)="onSelectAbility($event)">
+        <ion-select-option value="{{doc._id}}" *ngFor="let doc of response1?.data; let i = index;"> {{doc.title}} </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </div>
+
+  <ion-label heading>
+    <h2>All Workouts</h2>
+  </ion-label>
+  <div formgroup>
+    <ion-item lines="none"  class="ion-no-padding">
+      <ion-label style="display: none;">Select</ion-label>
+      <ion-select placeholder="Choose ability" interface="alert" [(ngModel)]="workout_id" (ionChange)="onSelectAllWorkout($event)">
+        <ion-select-option value="{{doc._id}}" *ngFor="let doc of response2?.data; let i = index;"> {{doc.title}} </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </div>
+
+  <ion-list>
+    <ion-label heading>
+      <h2>Select Exercises</h2>
+    </ion-label>
+
+    <ion-item class="noexerfound" *ngIf="response3?.data?.length == 0"><span style="margin: 10px;">No Exercise Found.</span></ion-item>
+
+    <ion-item lines="none" *ngFor="let doc of response3?.data; let i = index;" (click)="selectExercise(doc, i)" [ngClass]="selected_exercises.indexOf(doc?._id) == -1 ? 'kk' : 'active'">
+      <ion-thumbnail slot="start">
+        <span>
+          <img src="{{IMAGES_URL + doc?.image}}" alt="" *ngIf="doc?.image != ''"/>
+          <img src="assets/img/noimage.png" alt="" *ngIf="doc?.image == ''"/>
+        </span>				
+      </ion-thumbnail>	
+      <ion-label>
+        <h4>{{doc?.title}}</h4>
+        <div content-sec>
+          <ul>
+            <li><img src="assets/img/icon1.png" alt="" />{{doc?.sets.length}} Sets</li>
+            <li><img src="assets/img/icon2.png" alt="" />{{doc?.duration}} min</li>
+          </ul>
+        </div>
+      </ion-label>
+      <ion-checkbox slot="end" *ngIf="doc.schexer == 0"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+
+  <ion-button   [disabled]="response3?.data?.length == 0" color="primary"  shape="round" expand="full" (click)="ScheduleExercise()">
+    Save
+  </ion-button>
+</ion-content>

@@ -1,0 +1,135 @@
+<!--ion-header>
+  <ion-toolbar>
+    <ion-title>signup</ion-title>
+  </ion-toolbar>
+</ion-header-->
+<ion-content>
+  <div login>
+    <div logo>
+      <img src="assets/img/logo.png" />
+      <h1>Sign Up To Continue</h1>
+    </div>
+    <form [formGroup]="authForm">
+      <div formgroup>
+        <ion-item lines="none" class="ion-no-padding">
+          <ion-label position="stacked">Name</ion-label>
+          <ion-input
+            type="text"
+            placeholder="Enter  Name"
+            formControlName="name"
+          >
+          </ion-input>
+        </ion-item>
+        <span error *ngIf="isControlHasError('name','required')"
+          >Please enter name</span
+        >
+      </div>
+      <div formgroup>
+        <ion-item lines="none" class="ion-no-padding">
+          <ion-label position="stacked">Email</ion-label>
+          <ion-input
+            type="email"
+            placeholder="Enter  Email Address"
+            formControlName="email"
+          >
+          </ion-input>
+          <ion-icon slot="end" name="checkmark-outline"></ion-icon>
+        </ion-item>
+        <span error *ngIf="isControlHasError('email','required')"
+          >Please enter email</span
+        >
+        <span error *ngIf="isControlHasError('email','pattern')"
+          >Please enter valid email</span
+        >
+      </div>
+      <div formgroup>
+        <ion-item lines="none" class="ion-no-padding" pwdicon>
+          <ion-label position="stacked">Password</ion-label>
+          <ion-input
+            type="{{pass_type}}"
+            placeholder="Enter  Password"
+            formControlName="password"
+          >
+          </ion-input>
+        </ion-item>
+        <button class="ico-eye" slot="end" *ngIf="pass_type == 'password'">
+          <span>
+            <ion-icon
+              name="eye-off"
+              (click)="passwordView(pass_type)"
+            ></ion-icon>
+          </span>
+        </button>
+
+        <button class="ico-eye" slot="end" *ngIf="pass_type == 'text'">
+          <span>
+            <ion-icon name="eye" (click)="passwordView(pass_type)"></ion-icon>
+          </span>
+        </button>
+        <span error *ngIf="isControlHasError('password','required')"
+          >Please enter password</span
+        >
+        <span error *ngIf="isControlHasError('password','pattern')"
+          >Password must contain atleast 6 characters</span
+        >
+      </div>
+      <div formgroup>
+        <ion-item lines="none" class="ion-no-padding" pwdicon>
+          <ion-label position="stacked">Confirm Password</ion-label>
+          <ion-input
+            type="{{confirm_pass_type}}"
+            placeholder="Enter Confirm Password"
+            formControlName="confirm_password"
+          >
+          </ion-input>
+        </ion-item>
+        <button
+          class="ico-eye"
+          slot="end"
+          *ngIf="confirm_pass_type == 'password'"
+        >
+          <span>
+            <ion-icon
+              name="eye-off"
+              (click)="confirmPasswordView(confirm_pass_type)"
+            ></ion-icon>
+          </span>
+        </button>
+
+        <button class="ico-eye" slot="end" *ngIf="confirm_pass_type == 'text'">
+          <span>
+            <ion-icon
+              name="eye"
+              (click)="confirmPasswordView(confirm_pass_type)"
+            ></ion-icon>
+          </span>
+        </button>
+
+        <span
+          error
+          *ngIf="errors.indexOf(authForm.value.password) >= 0 && isControlHasError('confirm_password','required')"
+          >Please enter confirm password</span
+        >
+        <span
+          error
+          *ngIf="errors.indexOf(authForm.value.password) == -1 && authForm.value.password != authForm.value.confirm_password"
+          >Please enter correct confirm password</span
+        >
+      </div>
+      <ion-button
+        btn-login
+        color="primary"
+        shape="round"
+        expand="full"
+        type="button"
+        (click)="submit()"
+      >
+        Signup
+      </ion-button>
+    </form>
+    <p signuptext>
+      Already have an account?
+      <a href="javascript:void(0)" routerLink="/login"> Login Here</a>
+    </p>
+  </div>
+</ion-content>

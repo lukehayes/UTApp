@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-back-button
+      text=""
+      icon="chevron-back-outline"
+      slot="start"
+      routerLink="/height"
+    ></ion-back-button>
+    <ion-title class="ion-text-center">Activity Level</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div checkboxsec>
+    <div checkboxlist>
+      <div checkboxinner *ngFor="let item of activity_list; let i = index;">
+        <input
+          type="radio"
+          id="checkbox11"
+          name="checkbox"
+          style="display: none"
+          [value]="item._id"
+          [(ngModel)]="activity_level"
+        />
+        <label colorbg1 for="checkbox1{{i}}">
+          <img iconleft src="assets/img/beginner.png" *ngIf="i == 0" />
+          <img iconleft src="assets/img/intermidiate.png" *ngIf="i == 1" />
+          ><img iconleft src="assets/img/expert.png" *ngIf="i == 2" />
+          {{item.name}}
+          <span checkboxbtn><ion-icon name="checkmark-outline"></ion-icon></span
+        ></label>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-button (click)="submit()" color="primary" shape="round" expand="full">
+    Continue
+  </ion-button>
+</ion-footer>

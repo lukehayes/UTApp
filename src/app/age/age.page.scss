@@ -1,0 +1,98 @@
+ion-header
+{
+	&:after
+	{
+	    display:none;
+	}
+    ion-toolbar
+    {
+		--border-width:0px;
+		ion-back-button 
+		{
+			--icon-font-size: 25px;
+			color: var(--ion-color-white);
+		}
+		ion-title
+		{
+			font-size: 16px;
+			font-weight: 600;
+			color: var(--ion-color-white);
+		}
+    }
+}
+ion-content
+{
+    --padding-bottom: 0;
+	--background:var(--ion-color-black);
+	ion-button{
+        margin-top: 15px;
+        font-size: 14px;
+    }
+    .agepicker {
+        --padding-start: 13px;
+        border-radius: 10px;
+        height: 49px;
+        color: #fff;
+        margin-top: 15px;
+        background-color: #191A1E;
+        min-height: 58px;   
+		text-align: left; 
+		display: flex;
+    align-items: center;
+        ion-icon{
+            position: absolute;
+            right: 8px;
+            color: var(--ion-color-primary);
+		}
+		span{
+			margin-left: 10px;
+		}
+    }
+}
+ion-footer
+{
+    background:var(--ion-color-black);
+	padding:15px;
+	&:before
+	{
+		display:none;
+	}
+	ion-button
+	{
+	    --box-shadow: none;
+	    min-height: 57px;
+	    --background: var(--ion-color-primary);
+	    --ion-color-base: var(--ion-color-primary)!important;
+	    --border-radius: 15px;
+	    color: var(--ion-color-white);
+	    font-size: 14px;
+	    font-weight: 600;
+	    margin: 0 auto;
+	    text-transform:capitalize;
+	    width: calc(100% - 55px);	
+	}
+	p
+	{
+		color: var(--ion-color-white);
+		font-size: 14px;
+		font-weight: 600;
+		max-width: 300px;
+		margin: 15px auto 0;
+		text-align: center;
+		line-height: 1.5;
+	}
+}
+
+[imgWidth]{
+    width: 100%;
+    max-width: 100px;
+}
+
+[centerDiv]{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    text-align: center;
+    transform: translate(-50%,-50%);
+    width: 80%;
+}

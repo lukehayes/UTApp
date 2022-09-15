@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-toolbar color="primary">
+		<ion-back-button text="" icon="chevron-back-outline" slot="start" routerLink="/tabs/settings">
+		</ion-back-button> 	
+        <ion-title class="ion-text-center">Favorite Exercises</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+	<div exercises-sec>
+		<ion-card [ngStyle]="{'background': 'url(' + IMAGES_URL + doc.image + ')', 'background-size': 'cover'}" *ngFor="let doc of response?.data; let i = index;">
+			<ion-button favourite-icon *ngIf="doc.fav == 0" (click)="fav_unfav(doc, i, 1)"><ion-icon name="heart-outline" ></ion-icon></ion-button>
+
+			<ion-button favourite-icon *ngIf="doc.fav == 1" (click)="fav_unfav(doc, i, 0)"><ion-icon name="heart"></ion-icon></ion-button>
+			<ion-card-content routerLink="/exercise-details/{{doc._id}}">
+			    <h3>{{doc.title}}</h3>
+				<div playbtn>
+				    <a href="javascript:void(0)"><ion-icon name="play"></ion-icon></a>
+				</div>
+				<div content-sec>
+					<ul>
+						<li><img src="assets/img/icon1.png" alt="" />{{doc.sets}} Sets</li>
+						<li><img src="assets/img/icon2.png" alt="" />Total Time {{doc.duration}}</li>
+					</ul>
+				</div>
+			</ion-card-content>
+		</ion-card>
+		
+	</div>
+</ion-content>

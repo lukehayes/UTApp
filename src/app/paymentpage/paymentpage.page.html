@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-icon
+      style="
+        font-size: 20px;
+        position: absolute;
+        margin-left: 10px;
+        z-index: 999;
+      "
+      (click)="gobackone()"
+      name="chevron-back-outline"
+    ></ion-icon>
+    <ion-title class="ion-text-center">Payment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="payment-div">
+    <div class="payment-box">
+      <h6>{{detail?.data?.name}}</h6>
+      <h3><sup>£</sup>{{detail?.data?.price}}</h3>
+      <!-- <h4>{{doc.days}} days</h4> -->
+      <h4 *ngIf="detail?.data?.days == '30'">Monthly</h4>
+      <h4 *ngIf="detail?.data?.days == '365'">Yearly</h4>
+      <p>It includes <b>7 Days</b> free trial</p>
+      <p *ngIf="detail?.data?.name == 'Standard'">
+        it includes health nutrition, member chat, exercise video library.
+      </p>
+      <p *ngIf="detail?.data?.name == 'Premium'">
+        it includes monthly plans features plus record progress, custom workout,
+        schedule exercises.
+      </p>
+    </div>
+    <div id="paypal-button-container"></div>
+  </div>
+</ion-content>

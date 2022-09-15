@@ -1,0 +1,135 @@
+ion-header
+{
+   
+	&:after
+	{
+	    display:none;
+	}
+    ion-toolbar
+    {
+		--border-width:0px;
+		ion-back-button 
+		{
+			--icon-font-size: 25px;
+            position: relative;
+            left: 15px;
+			color: var(--ion-color-white);
+		}
+		ion-title
+		{
+			font-size: 16px;
+			font-weight: 600;
+			color: var(--ion-color-white);
+		}
+		ion-buttons 
+		{
+			margin: 0px 10px 0px 0px;
+			color: var(--ion-color-white);
+			font-size: 22px;
+		}	
+        ion-thumbnail{
+            position: relative;
+            right: 10px;
+            top: 8px;
+        }	
+    }
+}
+ion-content
+{
+	--background:var(--ion-color-black);
+    [program-abilities]
+	{
+	    padding: 20px 15px;
+	    ion-card
+		{
+			align-items: flex-end;
+			position: relative;
+			z-index: 1;
+			box-shadow: none;
+			border-radius: 18px;
+			margin: 0px 0px 20px;
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+            outline: 0px;			
+			&.bg1
+			{
+			    --background: url('../../assets/img/img1.jpg');
+            }		
+			&.bg2
+			{
+			    --background: url('../../assets/img/img2.jpg');
+            }		
+			&.bg3
+			{
+			    --background: url('../../assets/img/img3.jpg');
+            }		
+			&.bg4
+			{
+			    --background: url('../../assets/img/img4.jpg');
+            }	
+			ion-card-content
+			{
+				padding-top: 15px;
+				padding-bottom: 15px;
+				padding-inline-end: 15px;
+				padding-inline-start: 15px;			
+				h3
+				{
+					margin: 0px;
+					font-size: 15px;
+					font-weight:600;
+					color: var(--ion-color-white);
+					outline: 0px;
+				}
+				[content-sec]
+				{
+					margin: 35px 0px 0px;
+					display: flex;
+					align-items: flex-end;
+					justify-content: space-between;
+					ul
+					{
+						list-style-type: none;
+						padding:0px;
+						margin: 0px;
+						li
+						{
+							display: block;
+							font-size: 13px;
+							font-weight: 500;
+							color: var(--ion-color-white);
+							padding: 6px 0px 0px;
+						}
+					}
+					ion-button
+					{
+						border: 1px solid #fff;
+						border-radius: 40px;
+						--border-radius: 40px;
+						--background: transparent;
+						color: #fff;
+						font-size: 12px;
+						text-transform: uppercase;
+						--box-shadow: none;	
+						margin: 0px;
+						height: 28px;
+                        outline: 0px;						
+					}
+				}
+			}
+			&:after
+			{
+				position: absolute;
+				content: "";
+				top:0px;
+				bottom: 0px;
+				left: 0px;
+				right: 0px;
+				background: var(--ion-color-black);
+				opacity: 0.5;
+				z-index: -1;
+			}			
+		}
+	}	
+}	

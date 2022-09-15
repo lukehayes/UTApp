@@ -1,0 +1,158 @@
+<!--ion-header>
+  <ion-toolbar>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header-->
+
+<ion-content>
+  <div filtersec style="margin-top: 50px">
+    <a closebtn href="javascript:void(0)" (click)="dismiss()"
+      ><ion-icon name="close-outline"></ion-icon
+    ></a>
+    <div headsec>
+      <h3>{{detail?.title}}</h3>
+      <span>{{detail?.duration}}</span>
+    </div>
+    <div form-group>
+      <label>Workout Note</label>
+      <ion-item lines="none">
+        <ion-input
+          type="text"
+          placeholder="Type here..."
+          [(ngModel)]="description"
+          (keyup)="addUpdateNote(detail, '', 'workout')"
+        ></ion-input>
+      </ion-item>
+    </div>
+
+    <div
+      form-group
+      headingForm
+      *ngFor="let doc of detail?.exercises; let  i = index;"
+    >
+      <label
+        >{{doc.title}}
+        <ion-icon
+          name="ellipsis-vertical-outline"
+          (click)="popClick(i)"
+        ></ion-icon>
+
+        <div popoverBox *ngIf="popcontent && selectedIndex === i">
+          <ul>
+            <li>
+              <a (click)="addNote(doc, i, 'add')" *ngIf="doc.description == ''"
+                >Add Note</a
+              >
+            </li>
+            <li>
+              <a (click)="addNote(doc, i, 'edit')" *ngIf="doc.description != ''"
+                >Edit Note</a
+              >
+            </li>
+            <li><a (click)="presentAlert1(doc, i)">Weight Unit</a></li>
+            <!-- <li> <a routerLink="">Add Warm Up Sets</a></li> -->
+            <li>
+              <a (click)="presentAlertRemoveExerecise(doc,i)"
+                >Remove Exercise</a
+              >
+            </li>
+          </ul>
+        </div>
+      </label>
+      <div form-group>
+        <label>Note</label>
+        <ion-item lines="none">
+          <ion-input
+            type="text"
+            *ngIf="doc.note == true"
+            placeholder="Type here..."
+            [(ngModel)]="doc.description"
+            (keyup)="addUpdateNote(doc, i, 'exer')"
+            [disabled]="doc.disabled"
+          ></ion-input>
+        </ion-item>
+      </div>
+      <ion-grid class="ion-no-padding">
+        <ion-row class="headFont">
+          <ion-col size="2"> SET </ion-col>
+          <ion-col size="3"> NAME </ion-col>
+          <ion-col size="4" class="p6"> WEIGHT - {{doc.weight_unit}} </ion-col>
+          <ion-col size="3" class="p6"> REPS </ion-col>
+        </ion-row>
+
+        <ion-row *ngFor="let item of doc.sets; let indx = index;">
+          <ion-col size="2">
+            <h3>{{indx + 1}}</h3>
+          </ion-col>
+          <ion-col size="3" class="setname">
+            <p>{{item.name}}</p>
+          </ion-col>
+          <ion-col size="3" class="p6">
+            <ion-input
+              [(ngModel)]="item.weight"
+              (keyup)="addUpdateNote(doc, i, 'exer')"
+            ></ion-input>
+          </ion-col>
+          <ion-col size="3" class="p6">
+            <ion-input
+              [(ngModel)]="item.reps"
+              (keyup)="addUpdateNote(doc, i, 'exer')"
+            ></ion-input>
+          </ion-col>
+          <ion-col size="1">
+            <ion-icon
+              name="trash"
+              class="removeset"
+              (click)="deleteSet(doc, i, indx, 'exer')"
+            ></ion-icon>
+            <!-- <ion-checkbox (ionChange)="onsetChecked(doc, i, indx, $event)" [checked]="item.complete == '1' ?  true : false"></ion-checkbox> -->
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <div class="ion-text-center popupNote">
+        <h4 (click)="popupNote(i)">ADD SET</h4>
+        <div popoverBox1 *ngIf="popnote && selectedIndex == i">
+          <ul>
+            <li (click)="addSet(doc, i, 'warm')">
+              <h5>Warm Up</h5>
+              <span
+                ><ion-icon
+                  (click)="presentAlert('warm')"
+                  name="help-outline"
+                ></ion-icon
+              ></span>
+            </li>
+            <li (click)="addSet(doc, i, 'drop')">
+              <h5>Drop set</h5>
+              <span
+                ><ion-icon
+                  (click)="presentAlert('drop')"
+                  name="help-outline"
+                ></ion-icon
+              ></span>
+            </li>
+            <li (click)="addSet(doc, i, 'failure')">
+              <h5>Failure</h5>
+              <span
+                ><ion-icon
+                  (click)="presentAlert('failure')"
+                  name="help-outline"
+                ></ion-icon
+              ></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-button
+    (click)="startWorkout(value)"
+    color="primary"
+    shape="round"
+    expand="full"
+  >
+    Start Workout
+  </ion-button>
+</ion-footer>

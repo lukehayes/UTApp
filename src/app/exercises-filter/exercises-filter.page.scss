@@ -1,0 +1,139 @@
+ion-content
+{
+	[filtersec]
+	{
+	    padding: 20px;
+	    [closebtn]
+		{
+		    display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 26px;
+			height: 26px;
+			font-size: 20px;
+			position: absolute;
+			right: 12px;
+			top: 12px;
+			z-index: 1;
+			border-radius: 50%;
+			background: var(--ion-color-primary);
+			color: var(--ion-color-white);
+		}
+	    [headsec]
+		{
+		    padding: 0px 20px 25px 0px;
+		    h3
+			{
+			    margin: 0px;
+				font-size: 16px;
+				font-weight: 700;
+				color: var(--ion-color-black);
+			}
+		}
+		[checkboxsec]
+		{
+		    padding: 0px 0px 50px;
+		    ul
+			{
+			    list-style-type: none;
+				padding: 0px;
+				margin: 0px;
+				li
+				{
+				    display: inline-block;
+					padding: 0px 15px 20px 0px;
+					&:last-child
+					{
+					    padding: 0px;
+						width: 100%;
+					}
+					[checkboxmn]
+					{
+						display: flex;
+						align-items: center;
+						position: relative;
+						cursor: pointer;
+						-webkit-user-select: none;
+						-moz-user-select: none;
+						-ms-user-select: none;
+						user-select: none;
+						font-size: 12px;
+						font-weight: 600;
+						color: var(--ion-color-black);
+						input 
+						{
+							position: absolute;
+							opacity: 0;
+							cursor: pointer;
+							height: 0;
+							width: 0;
+							&:checked
+							{
+								&~ 
+								{
+									.checkmark 
+									{
+										&:after 
+										{
+											display: block;
+										}					
+									}		
+								}		
+							}		
+						}
+						.checkmark 
+						{
+							position: relative;
+							display: inline-block;
+							height: 20px;
+							border-radius: 4px;
+                            margin-right: 5px;							
+							width: 20px;
+							background: var(--ion-color-white);
+							border: 2px solid var(--ion-color-primary);
+							&:after 
+							{
+								content: "";
+								position: absolute;
+								display: none;
+								left: 0px;
+								right: 0px;
+								bottom: 4px;
+								margin: auto;
+								width: 4px;
+								height: 8px;
+								border: solid var(--ion-color-black);
+								border-width: 0 2px 2px 0;
+								transform: rotate(45deg);			
+							}		
+						}	
+					}					
+				}
+			}
+		}
+		[apply-btn]
+		{
+			--box-shadow: none;
+			min-height: 57px;
+			--background: var(--ion-color-primary);
+			--border-radius: 15px;
+			color: var(--ion-color-white);
+			font-size: 14px;
+			font-weight: 600;
+			text-transform:capitalize;		
+			margin: 0px;
+		}
+		[clear-btn]
+		{
+			--box-shadow: none;
+			margin: 10px 0px 0px;
+			min-height: 57px;
+			/*--background: #ff8756;*/
+			--border-radius: 15px;
+			color: var(--ion-color-white);
+			font-size: 14px;
+			font-weight: 600;
+			text-transform:capitalize;		
+		}
+	}
+}

@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-back-button
+      slot="start"
+      routerLink="/tabs/settings"
+      text=""
+      icon="chevron-back-outline"
+    ></ion-back-button>
+    <ion-title class="ion-text-center">Notifications</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-item
+    class="norecordfound ion-justify-content-center ion-align-items-center"
+    lines="none"
+    *ngIf="response?.data?.length == 0"
+  >
+    <span norecordnoti>No notifications yet.</span>
+  </ion-item>
+  <ion-item
+    lines="none"
+    *ngFor="let item of response?.data"
+    (click)="view(item)"
+  >
+    <ion-avatar>
+      <img
+        *ngIf="errors.indexOf(item.sender_info.image) == -1 && getimage(item.sender_info.image) == true"
+        src="{{item.sender_info.image}}"
+      />
+      <img
+        *ngIf="errors.indexOf(item.sender_info.image) == -1 && getimage(item.sender_info.image) == false"
+        src="{{IMAGES_URL  + item.sender_info.image}}"
+      />
+      <img
+        *ngIf="errors.indexOf(item.sender_info.image) >= 0"
+        src="assets/img/default.png"
+      />
+    </ion-avatar>
+    <ion-label>
+      <p>
+        <b>{{item?.sender_info.name}}</b>
+        <span *ngIf="item.noti_type == 'like'">
+          <span> {{item?.sender_info.name}}</span> liked your post:
+          <b> {{item.item.title}}</b>
+        </span>
+
+        <span *ngIf="item.noti_type == 'add comment'">
+          <span> {{item.sender_info.name}}</span> commented on your post:
+          <b> {{item.item.title}}</b>
+        </span>
+      </p>
+    </ion-label>
+    <ion-note slot="end">{{timeSince(item.created_on)}}</ion-note>
+  </ion-item>
+</ion-content>

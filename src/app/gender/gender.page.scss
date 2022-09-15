@@ -1,0 +1,135 @@
+ion-header
+{
+	&:after
+	{
+	    display:none;
+	}
+    ion-toolbar
+    {
+		--border-width:0px;
+		ion-back-button 
+		{
+			--icon-font-size: 25px;
+			color: var(--ion-color-white);
+		}
+		ion-title
+		{
+			font-size: 16px;
+			font-weight: 600;
+			color: var(--ion-color-white);
+		}
+    }
+}
+ion-content
+{
+    --padding-bottom: 0;
+	--background:var(--ion-color-black);
+	[gender]
+	{
+		min-height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		[radiomain]
+		{    
+			width: 100%;
+			[radiolist]
+			{
+				margin:0px 10px;
+				display: flex;
+				align-items: center;
+				justify-content: space-around;
+				[radioinner]
+				{
+					text-align:center;
+					label
+					{     
+						position: relative; 		  
+						[imggender]
+						{
+							width: 140px;
+							height: 180px;
+						    margin: 0px 5px;	
+							display: flex;
+							align-items:center;
+							justify-content:center;
+							background: var(--ion-color-dark);
+							border-radius: 20px;
+							img 
+							{
+								max-width: 45px;
+								-webkit-filter: brightness(1) invert(0);
+								filter: brightness(1) invert(0);								
+							}							
+						}
+						h3
+						{
+							margin-top: 22px;
+							color:var(--ion-color-white);
+							font-size: 16px;	
+							font-weight:600;
+						}
+					}
+					input[type="radio"]:checked + label
+					{
+					  
+						[imggender]
+						{
+							background: var(--ion-color-gradient);
+							img 
+							{
+								-webkit-filter: brightness(0) invert(1);
+								filter: brightness(0) invert(1);								
+							}							
+						}
+					   
+					}
+				}
+			}
+		}
+		p
+		{
+			color: var(--ion-color-white);
+			font-size: 15px;
+			font-weight: 600;
+			max-width: 300px;
+			margin: 35px auto 0;
+			text-align: center;
+			line-height: 1.5;
+		}
+    }
+}
+ion-footer
+{
+    background:var(--ion-color-black);
+	padding:15px;
+	&:before
+	{
+		display:none;
+	}
+	ion-button
+	{
+	    --box-shadow: none;
+	    min-height: 57px;
+	    --background: var(--ion-color-primary);
+	    --ion-color-base: var(--ion-color-primary)!important;
+	    --border-radius: 15px;
+	    color: var(--ion-color-white);
+	    font-size: 14px;
+	    font-weight: 600;
+	    margin: 0 auto;
+	    text-transform:capitalize;
+	    width: calc(100% - 55px);	
+	}
+	p
+	{
+		color: var(--ion-color-white);
+		font-size: 14px;
+		font-weight: 600;
+		max-width: 300px;
+		margin: 15px auto 0;
+		text-align: center;
+		line-height: 1.5;
+	}
+}

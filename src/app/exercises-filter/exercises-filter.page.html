@@ -1,0 +1,36 @@
+<ion-content>
+  <div filtersec>
+    <a closebtn href="javascript:void(0)" (click)="dismiss1()"
+      ><ion-icon name="close-outline"></ion-icon
+    ></a>
+    <div headsec>
+      <h3>Filter</h3>
+    </div>
+    <div checkboxsec>
+      <ul>
+        <li *ngFor="let doc of response?.data; let i = index;">
+          <label checkboxmn>
+            <input
+              type="checkbox"
+              [checked]="doc.checked"
+              (change)="selectedcheck(doc, i)"
+            />
+            <span class="checkmark"></span>
+            {{doc.name}}
+          </label>
+        </li>
+      </ul>
+    </div>
+    <ion-button apply-btn expand="full" shape="round" (click)="dismiss()"
+      >Apply</ion-button
+    >
+    <ion-button
+      [disabled]="selected_cats?.length == 0"
+      clear-btn
+      expand="full"
+      shape="round"
+      (click)="clear()"
+      >Clear</ion-button
+    >
+  </div>
+</ion-content>

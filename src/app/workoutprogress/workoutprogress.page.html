@@ -1,0 +1,159 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-back-button
+      slot="start"
+      text=""
+      routerLink="/tabs/settings"
+      icon="chevron-back-outline"
+    ></ion-back-button>
+    <ion-title class="ion-text-center">Workout Progress</ion-title>
+
+    <div slot="end" class="filterimg" (click)="popup()">
+      <ion-icon class="weekclass" name="funnel"></ion-icon>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <!-- <img src="assets/img/Workout-Progress.png" /> -->
+
+  <!-- <ion-button class="saveBtn" (click)="clickedFilter('week')"><span>weekly</span></ion-button>
+<ion-button class="saveBtn" (click)="clickedFilter('month')"><span>monthly</span></ion-button> -->
+  <div flexprogress>
+    <div class="content">
+      <div class="circle">{{response?.data?.length}}</div>
+      <span>Workouts</span>
+    </div>
+    <div class="content">
+      <div class="circle">{{exercises}}</div>
+      <span>Exercises</span>
+    </div>
+    <div class="content">
+      <div class="circle">{{calories_burned}}</div>
+      <span>Calories</span>
+    </div>
+  </div>
+
+  <ion-list>
+    <!-- <ion-item lines="none" class="ion-no-padding" *ngFor="let doc of response?.data; let i = index;">
+    <ion-thumbnail slot="start">
+      <span>
+        
+      </span>				
+    </ion-thumbnail>	
+    <ion-label>
+      <h4>{{doc.title}}</h4>
+    </ion-label>
+    <ion-checkbox slot="end" checked></ion-checkbox>
+  </ion-item> -->
+
+    <div class="chartjs-container">
+      <canvas
+        baseChart
+        [datasets]="lineChartData"
+        [labels]="lineChartLabels"
+        [options]="lineChartOptions"
+        [colors]="lineChartColors"
+        [legend]="lineChartLegend"
+        [chartType]="lineChartType"
+        [plugins]="lineChartPlugins"
+        (chartHover)="chartHovered($event)"
+      >
+      </canvas>
+    </div>
+
+    <div uploadimgsec>
+      <div uploadimage>
+        <div fileupload>
+          <label for="fileupload" (click)="selectImage()">
+            <div uploadinner>
+              <div class="uploadcamera">
+                <img src="assets/img/camera-icon.png" />
+                <h3>Take a Photo or choose from your library</h3>
+              </div>
+              <!-- <img class="uploaded" src="assets/img/default.png" /> -->
+              <!-- <img
+              class="uploaded"
+              [style.width.px]="200"
+              [style.height.px]="200"
+              *ngIf="errors.indexOf(live_image_url) == -1"
+              [src]="sanitizer.bypassSecurityTrustResourceUrl(win.Ionic.WebView.convertFileSrc(live_image_url))"
+            /> -->
+            </div>
+          </label>
+          <!-- <input type="file" id="fileupload" name="fileupload" style="display:none"/>		     -->
+        </div>
+        <!-- <p>Take a Photo or choose from your library</p> -->
+      </div>
+    </div>
+
+    <!-- <div>
+    <div *ngFor="let img of image?.data">
+      <img src="{{IMAGES_URL + img.image}}" />
+    </div>
+  </div> -->
+
+    <!-- First Slider -->
+    <div class="progressbox">
+      <!-- <ion-title>
+      <span>10 Feb</span>
+    </ion-title> -->
+      <ion-slides pager="false" [options]="slideOpts">
+        <ion-slide *ngFor="let img of imagesData">
+          <img src="{{IMAGES_URL + img.image}}" alt="" />
+        </ion-slide>
+      </ion-slides>
+    </div>
+
+    <!--  <ion-item lines="none" class="ion-no-padding">
+    <ion-thumbnail slot="start">
+      <span>
+        <img src="assets/img/workout-icon1.jpg" alt="" />
+      </span>				
+    </ion-thumbnail>	
+    <ion-label>
+      <h4>High Knees Running
+        In Place</h4>
+    </ion-label>
+    <ion-checkbox slot="end" checked></ion-checkbox>
+  </ion-item>
+
+  <ion-item lines="none" class="ion-no-padding">
+    <ion-thumbnail slot="start">
+      <span>
+        <img src="assets/img/workout-icon3.jpg" alt="" />
+      </span>				
+    </ion-thumbnail>	
+    <ion-label>
+      <h4>High Knees Running
+        In Place</h4>
+    </ion-label>
+    <ion-checkbox slot="end"></ion-checkbox>
+  </ion-item>
+
+  <ion-item lines="none" class="ion-no-padding">
+    <ion-thumbnail slot="start">
+      <span>
+        <img src="assets/img/workout-icon4.jpg" alt="" />
+      </span>				
+    </ion-thumbnail>	
+    <ion-label>
+      <h4>High Knees Running
+        In Place</h4>
+    </ion-label>
+    <ion-checkbox slot="end"></ion-checkbox>
+  </ion-item>
+
+  <ion-item lines="none" class="ion-no-padding">
+    <ion-thumbnail slot="start">
+      <span>
+        <img src="assets/img/workout-icon5.jpg" alt="" />
+      </span>				
+    </ion-thumbnail>	
+    <ion-label>
+      <h4>High Knees Running
+        In Place</h4>
+    </ion-label>
+    <ion-checkbox slot="end"></ion-checkbox>
+  </ion-item> -->
+  </ion-list>
+</ion-content>

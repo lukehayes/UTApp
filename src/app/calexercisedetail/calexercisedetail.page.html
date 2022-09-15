@@ -1,0 +1,76 @@
+<ion-header [ngStyle]="{'background': 'url(' + IMAGES_URL + detail?.image + ')', 'background-size': 'cover'}">
+  <ion-toolbar>
+     <ion-back-button slot="start" defaultHref="/tabs/calender" text=""  icon="chevron-back-outline"></ion-back-button>
+  </ion-toolbar>
+  <div playbtn>
+    <a routerLink="/exercise-details"><ion-icon name="play"></ion-icon></a>
+  </div>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div caldetails>
+    <h3>{{detail?.title}}</h3>
+    <ion-row>
+      <ion-col size="3">
+        <div *ngIf="detail?.fav == 1" >
+          <ion-icon name="star"></ion-icon>
+          <h4>Favourite</h4>
+        </div>
+        <div *ngIf="detail?.fav == 0">
+          <ion-icon name="star-outline" ></ion-icon>
+          <h4>Favourite</h4>
+        </div>
+      </ion-col>
+      <ion-col size="3">
+        <div routerLink="/rescheduleexercise/{{cat_id}}/{{id}}">  
+          <ion-icon name="calendar-outline"></ion-icon>
+          <h4>Reschedule</h4>
+        </div>
+      </ion-col>
+      <ion-col size="3">
+        <div (click)="presentAlert('1')" *ngIf="detail?.completed_status == '0'">
+          <ion-icon name="checkmark-done-circle-outline"></ion-icon>
+          <h4>Complete</h4>
+        </div>
+
+        <div (click)="presentAlert('0')" *ngIf="detail?.completed_status == '1'">
+          <ion-icon name="checkmark-done-circle"></ion-icon>
+          <h4>Completed</h4>
+        </div>
+
+      </ion-col>
+      <ion-col size="3">
+        <div (click)="presentDeleteAlert()">
+          <ion-icon name="close-circle-outline"></ion-icon>
+          <h4>Delete</h4>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-list>
+			<ion-item lines="none" *ngFor="let doc of commentList; let i = index;">
+				<ion-avatar slot="start">
+				    <img src="assets/img/default.png" alt="" *ngIf="errors.indexOf(doc.userinfo.image) >= 0"/>
+            <img src="{{IMAGES_URL + doc.userinfo.image}}" alt="" *ngIf="errors.indexOf(doc.userinfo.image) == -1"/>
+				</ion-avatar>
+				<ion-label>
+					<h4>{{doc.userinfo.name}}</h4>
+					<p>{{doc.comment}}</p>
+				</ion-label>
+				<div date-sec slot="end">
+				    <p>{{timeSince(doc.created_on)}}</p>
+				</div>					
+			</ion-item>	
+
+     
+    </ion-list>
+  </div>
+</ion-content>
+<ion-footer>
+	<ion-item lines="none">
+	    <ion-input placeholder="Add Comment..." [(ngModel)]="comment"></ion-input>
+		<ion-button (click)="addComment()">
+		    <ion-icon name="send"></ion-icon>
+		</ion-button>
+	</ion-item>
+</ion-footer>

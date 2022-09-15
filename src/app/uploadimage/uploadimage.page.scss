@@ -1,0 +1,100 @@
+ion-header {
+  &:after {
+    display: none;
+  }
+  ion-toolbar {
+    --border-width: 0px;
+    ion-back-button {
+      --icon-font-size: 25px;
+      color: var(--ion-color-white);
+    }
+    ion-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ion-color-white);
+    }
+  }
+}
+ion-content {
+  --background: var(--ion-color-black);
+  [uploadimgsec] {
+    display: flex;
+    align-items: center;
+    min-height: 100%;
+    [uploadimage] {
+      padding: 20px 15px;
+      width: 100%;
+      p {
+        color: var(--ion-color-white);
+        font-size: 15px;
+        font-weight: 500;
+        max-width: 250px;
+        margin: 35px auto 0;
+        text-align: center;
+        line-height: 1.5;
+      }
+      [fileupload] {
+        width: 200px;
+        margin: 0px auto;
+        label {
+          background: var(--ion-color-gradient);
+          border-radius: 20px;
+          display: block;
+          text-align: center;
+          padding: 10px;
+          [uploadinner] {
+            border-radius: 20px;
+            padding: 12px 10px;
+            border: 2px dashed var(--ion-color-white);
+            .uploadcamera {
+              margin: 40px 0;
+            }
+            img {
+              height: 65px;
+            }
+            img.uploaded {
+              width: 156px;
+              height: 156px;
+              border-radius: 20px;
+              object-fit: cover;
+            }
+            h3 {
+              font-size: 16px;
+              font-weight: 500;
+              color: var(--ion-color-white);
+              margin: 25px 0px 0px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+ion-footer {
+  background: var(--ion-color-black);
+  padding: 15px;
+  &:before {
+    display: none;
+  }
+  ion-button {
+    --box-shadow: none;
+    min-height: 57px;
+    --background: var(--ion-color-primary);
+    --ion-color-base: var(--ion-color-primary) !important;
+    --border-radius: 15px;
+    color: var(--ion-color-white);
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 auto;
+    text-transform: capitalize;
+    width: calc(100% - 55px);
+  }
+}
+
+.skipbutton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 6px;
+  margin: 10px;
+}

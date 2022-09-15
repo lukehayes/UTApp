@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-back-button
+      slot="start"
+      defaultHref="/settings"
+      text=""
+      icon="chevron-back-outline"
+    ></ion-back-button>
+    <ion-title class="ion-text-center">Schedule Exercise</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-label heading>
+    <h2>Select Date</h2>
+  </ion-label>
+  <div formgroup mb15>
+    <ion-item lines="none" class="ion-no-padding">
+      <ion-datetime
+        [(ngModel)]="selected_date"
+        display-timezone="utc"
+      ></ion-datetime>
+    </ion-item>
+  </div>
+
+  <ion-list>
+    <ion-item lines="none">
+      <ion-thumbnail slot="start">
+        <span>
+          <img
+            src="{{IMAGES_URL + detail?.image}}"
+            alt=""
+            *ngIf="detail?.image != ''"
+          />
+          <img
+            src="assets/img/noimage.png"
+            alt=""
+            *ngIf="detail?.image == ''"
+          />
+        </span>
+      </ion-thumbnail>
+      <ion-label>
+        <h4>{{detail?.title}}</h4>
+        <div content-sec>
+          <ul>
+            <li>
+              <img src="assets/img/icon1.png" alt="" />{{detail?.sets}} Sets
+            </li>
+            <li>
+              <img src="assets/img/icon2.png" alt="" />{{detail?.duration}} min
+            </li>
+          </ul>
+        </div>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-button
+    color="primary"
+    shape="round"
+    expand="full"
+    (click)="ScheduleExercise()"
+  >
+    Save
+  </ion-button>
+</ion-content>

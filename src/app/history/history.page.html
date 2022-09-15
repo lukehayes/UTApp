@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-back-button
+      slot="start"
+      routerLink="/tabs/settings"
+      text=""
+      icon="chevron-back-outline"
+    ></ion-back-button>
+    <ion-title class="ion-text-center">History</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <div history>
+    <div historyBox>
+      <div historyContent *ngFor="let doc of response?.data">
+        <h4>{{doc.workout.title}}</h4>
+        <h5>{{doc.created_on | date:'mediumDate'}}</h5>
+        <ul class="ulBox">
+          <li>
+            <span><ion-icon name="time-outline"></ion-icon> 1h</span>
+          </li>
+          <li>
+            <span
+              ><ion-icon name="barbell-outline"></ion-icon>
+              {{caluclateweight(doc.workout.exercises)}}Kg</span
+            >
+          </li>
+          <li>
+            <span
+              ><ion-icon name="flame-outline"></ion-icon>
+              {{caluclateCalories(doc.workout.exercises)}}</span
+            >
+          </li>
+        </ul>
+        <ion-row>
+          <ion-col class="pl-0" size="8">
+            <h4>Exercise</h4>
+            <ul>
+              <li *ngFor="let exer of doc.workout.exercises">
+                <span>{{exer.title}}</span>
+              </li>
+            </ul>
+          </ion-col>
+        </ion-row>
+      </div>
+
+      <div norecords *ngIf="response?.data?.length == 0">No record found.</div>
+    </div>
+  </div>
+</ion-content>

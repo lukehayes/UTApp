@@ -1,0 +1,105 @@
+ion-header {
+  &:after {
+    display: none;
+  }
+  ion-toolbar {
+    --border-width: 0px;
+    --background: var(--ion-color-gradient) !important;
+    --ion-color-base: var(--ion-color-gradient) !important;
+    ion-back-button {
+      --icon-font-size: 25px;
+      position: relative;
+      left: 15px;
+      color: var(--ion-color-white);
+    }
+    ion-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ion-color-white);
+    }
+  }
+}
+
+ion-content {
+  --background: var(--ion-color-black);
+  [history] {
+    [historyBox] {
+      color: #fff;
+      h3 {
+        color: #fff;
+        font-size: 12px;
+        margin: 0 0 10px 0;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
+      [historyContent] {
+        margin-bottom: 10px;
+        border: 2px solid #1c1c1c;
+        padding: 15px 15px 5px 15px;
+        border-radius: 5px;
+        h4 {
+          font-size: 14px;
+          margin: 0 0 4px 0;
+        }
+        h5 {
+          margin: 0;
+          font-size: 13px;
+          color: #a6a6a6;
+        }
+        .ulBox {
+          padding-left: 0;
+          list-style: none;
+          margin: 15px 0 8px 0px;
+          display: flex;
+          li {
+            margin-right: 20px;
+            font-size: 13px;
+            span {
+              display: flex;
+              align-items: center;
+              ion-icon {
+                margin-right: 5px;
+              }
+            }
+          }
+        }
+        ion-row {
+          ion-col {
+            h4 {
+              margin: 0;
+            }
+            ul {
+              padding-left: 0;
+              list-style: none;
+              margin: 5px 0 0 0px;
+              line-height: 30px;
+              li {
+                font-size: 13px;
+                color: #bec3c6;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.pl-0 {
+  padding-left: 0;
+  text-align: left;
+}
+
+.pr-0 {
+  padding-right: 0;
+  text-align: right;
+}
+
+[norecords] {
+  color: #fff;
+  border-radius: 10px !important;
+  background: #393636c7;
+  text-align: center;
+  padding: 15px;
+}

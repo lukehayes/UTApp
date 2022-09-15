@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-back-button
+      slot="start"
+      routerLink="/tabs/settings"
+      text=""
+      icon="chevron-back-outline"
+    ></ion-back-button>
+    <ion-title class="ion-text-center"
+      >{{id == 'terms' ? 'Terms & Conditions': 'Privacy Policy'}}</ion-title
+    >
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <div terms>
+    <p [innerHTML]="detail?.content"></p>
+  </div>
+</ion-content>

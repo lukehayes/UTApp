@@ -1,0 +1,295 @@
+ion-header {
+  &:after {
+    display: none;
+  }
+  ion-toolbar {
+    --border-width: 0px;
+    ion-back-button {
+      --icon-font-size: 25px;
+      position: relative;
+      left: 15px;
+      color: var(--ion-color-white);
+    }
+
+    ion-icon {
+      font-size: 24px;
+      position: relative;
+      right: 15px;
+      color: var(--ion-color-white);
+    }
+    ion-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ion-color-white);
+    }
+  }
+}
+ion-content {
+  --background: var(--ion-color-black);
+  ion-list {
+    overflow: visible;
+    contain: initial;
+    position: relative;
+    z-index: 1;
+    background: transparent;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin: 15px 0px;
+
+ 
+    ion-item{
+      box-shadow: 0px 0px 9px 0px rgba(38, 45, 74, 0.1);
+      --background: #17191b;
+      border-radius: 15px;
+      --border-radius: 15px;
+      --padding-start: 0px;
+      --inner-padding-end: 10px;
+      margin-left: 25px;
+      margin-bottom: 20px;
+      overflow: visible;
+      ion-thumbnail {
+        width: 110px;
+        height: 96px;
+        margin: 0px 15px 0px -25px;
+        // padding: 3px;
+        border-radius: 15px;
+        --border-radius: 15px;
+        overflow: hidden;
+        // background: var(--ion-color-white);
+        // -webkit-clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+        // clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+        position: relative;
+        z-index: 1;
+        span {
+          width: 100%;
+          height: 100%;
+          display: block;
+          // -webkit-clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+          // clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+          img {
+            border-radius: 15px;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+      ion-label {
+        margin: 0px;
+        white-space: normal;
+        padding-right: 8px;
+        h4 {
+          font-size: 14px;
+          line-height: 22px;
+          font-weight: 500;
+          color: var(--ion-color-white);
+          margin: 0px;
+        }
+      }
+      .arrow-ri {
+        margin: 0px;
+        font-size: 20px;
+        color: var(--ion-color-primary);
+        position: relative;
+        display: inline-flex;
+        outline: 0px;
+        cursor: pointer;
+      }
+    }
+  }
+  [Exercisedetail] {
+    padding: 20px;
+    .detailW {
+      display: block;
+      position: relative;
+      z-index: 1;
+      border-radius: 18px;
+      background: transparent;
+      img {
+        height: 200px;
+        width: 100%;
+        display: block;
+        object-fit: cover;
+        border-radius: 18px;
+      }
+      [videocontent] {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        right: 15px;
+        z-index: 1;
+        h3 {
+          font-size: 13px;
+          font-weight: 600;
+          margin: 0px 0px 5px;
+          color: var(--ion-color-white);
+        }
+        p {
+          font-size: 10px;
+          font-weight: 400;
+          margin: 0px;
+          color: var(--ion-color-white);
+        }
+      }
+      [videoplayersec] {
+        position: absolute;
+        bottom: 8px;
+        left: 15px;
+        right: 15px;
+        z-index: 1;
+        ion-range {
+          padding: 0px;
+          --bar-background: var(--ion-color-white);
+          --height: 28px;
+          ion-label {
+            color: var(--ion-color-white);
+            font-size: 12px;
+            ion-icon {
+              font-size: 14px;
+              transform: rotate(45deg);
+            }
+          }
+        }
+      }
+      [playbtn] {
+        text-decoration: none;
+        width: 44px;
+        height: 44px;
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        margin: auto;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--ion-color-white);
+        opacity: 0.7;
+        z-index: 1;
+        ion-icon {
+          color: var(--ion-color-black);
+          padding-left: 3px;
+          font-size: 24px;
+        }
+      }
+      &:after {
+        content: "";
+        /*position: absolute;*/
+        background: var(--ion-color-black);
+        opacity: 0.6;
+        top: 0px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+    }
+    [coursecontent] {
+      p {
+        font-size: 12px;
+        font-weight: 300;
+        color: var(--ion-color-white);
+        line-height: 20px;
+        margin: 20px 0px;
+      }
+    }
+    [workoutcount] {
+      [heading] {
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--ion-color-white);
+        position: relative;
+        z-index: 1;
+        margin: 0px 0 20px;
+      }
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        li {
+          display: flex;
+          align-items: flex-start;
+          color: var(--ion-color-white);
+          font-size: 12px;
+          margin: 0 0 15px;
+          p {
+            margin: 0px 10px 0px 0px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--ion-color-white);
+            max-width: 100px;
+            min-width: 100px;
+          }
+        }
+      }
+    }
+    [workingdetails] {
+      [heading] {
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--ion-color-white);
+        position: relative;
+        z-index: 1;
+        margin: 25px 0 20px;
+      }
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        li {
+          display: flex;
+          align-items: center;
+          color: var(--ion-color-white);
+          font-size: 12px;
+          margin: 0 0 15px;
+          ion-icon {
+            font-size: 15px;
+          }
+          p {
+            margin: 0 0 0 10px;
+          }
+        }
+      }
+    }
+  }
+  [detailbtn] {
+    text-align: center;
+    position: fixed;
+    right: 8px;
+    bottom: 8px;
+    ion-button {
+      display: block;
+      --border-radius: 50%;
+      --padding-end: 0px;
+      --padding-start: 0px;
+      --padding-top: 0px;
+      --padding-bottom: 0px;
+      --background: var(--ion-color-primary);
+      --color: var(--ion-color-white);
+      --box-shadow: none;
+      font-size: 14px;
+      width: 38px;
+      height: 38px;
+      margin: 8px auto;
+      outline: 0px;
+      img {
+        max-height: 16px;
+      }
+    }
+  }
+}
+
+
+
+.swipableoption {
+  box-shadow: 0px 0px 9px 0px rgba(38, 45, 74, 0.1);
+  --background: #ee682c;
+  border-radius: 15px;
+  --border-radius: 15px;
+  --inner-padding-end: 10px;
+  margin-bottom: 20px;
+  overflow: visible;
+}

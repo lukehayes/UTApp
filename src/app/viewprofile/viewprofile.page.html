@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-back-button
+      slot="start"
+      defaultHref="/tabs/settings"
+      text=""
+      icon="chevron-back-outline"
+    ></ion-back-button>
+    <ion-title class="ion-text-center">View Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <div profiledetails>
+    <div userimg>
+      <img
+        *ngIf="errors.indexOf(image) == -1 && errors.indexOf(live_image_url) >= 0"
+        [src]="IMAGES_URL + image"
+      />
+      <img
+        *ngIf="errors.indexOf(live_image_url) == -1"
+        [src]="sanitizer.bypassSecurityTrustResourceUrl(win.Ionic.WebView.convertFileSrc(live_image_url))"
+      />
+      <img
+        *ngIf="errors.indexOf(image) >= 0 && errors.indexOf(live_image_url) >= 0"
+        [src]="'/assets/img/default.png'"
+      />
+    </div>
+    <p>{{profile?.data?.name}}</p>
+    <p>{{profile?.data?.email}}</p>
+    <div>
+      <ion-list>
+        <form [formGroup]="authForm">
+          <div formgroup>
+            <ion-item lines="none" class="ion-no-padding">
+              <ion-avatar><img src="assets/img/gender1.png/" /></ion-avatar
+              ><ion-label>{{profile?.data?.gender}}</ion-label>
+            </ion-item>
+          </div>
+          <div formgroup>
+            <ion-item lines="none" class="ion-no-padding">
+              <ion-avatar><img src="assets/img/weight2.png/" /></ion-avatar
+              ><ion-label
+                >{{profile?.data?.weight}}
+                {{profile?.data?.weight_str}}</ion-label
+              >
+            </ion-item>
+          </div>
+          <div formgroup>
+            <ion-item lines="none" class="ion-no-padding">
+              <ion-avatar><img src="assets/img/height1.png/" /></ion-avatar
+              ><ion-label>{{profile?.data?.height}} </ion-label>
+            </ion-item>
+          </div>
+          <div formgroup>
+            <ion-item lines="none" class="ion-no-padding">
+              <ion-avatar><img src="assets/img/age1.png/" /></ion-avatar
+              ><ion-label>{{profile?.data?.age}} </ion-label>
+            </ion-item>
+          </div>
+          <div formgroup>
+            <ion-item lines="none" class="ion-no-padding">
+              <ion-avatar
+                ><img src="assets/img/activitylevel1.png/" /></ion-avatar
+              ><ion-label>{{profile?.data?.activity}} </ion-label>
+            </ion-item>
+          </div>
+        </form>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>

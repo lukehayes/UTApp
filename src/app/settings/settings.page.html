@@ -1,0 +1,182 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <!-- <ion-back-button text="" icon="chevron-back-outline" slot="start" defaultHref="/">
+       </ion-back-button> 	 -->
+    <ion-title class="ion-text-center">Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <div settings>
+    <ion-item lines="none" class="ion-no-padding" userinfo detail="false">
+      <ion-avatar>
+        <img
+          src="assets/img/default.png"
+          *ngIf="errors.indexOf(profile?.data?.image) >= 0"
+        />
+        <img
+          src="{{IMAGES_URL + profile?.data?.image}}"
+          *ngIf="errors.indexOf(profile?.data?.image) == -1"
+        />
+      </ion-avatar>
+      <ion-label>
+        <h2>{{profile?.data?.name}}</h2>
+        <p>{{profile?.data?.email}}</p>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none" menulinks routerLink="/editprofile" detail="false">
+      <ion-label>
+        <h2>My Profile</h2>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item lines="none" menulinks routerLink="/my-workouts" detail="false">
+      <ion-label>
+        <h2>Workouts Library</h2>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <!-- <ion-item lines="none" menulinks routerLink="/my-workouts" detail="false"> -->
+    <ion-item lines="none" menulinks (click)="gotochat()" detail="false">
+      <ion-label>
+        <!-- <h2>Workouts Library</h2> -->
+        <h2>Chat</h2>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item lines="none" menulinks routerLink="/health" detail="false">
+      <ion-label>
+        <h2>Health</h2>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item
+      lines="none"
+      menulinks
+      (click)="gotosusbscription()"
+      detail="false"
+    >
+      <ion-label>
+        <h2>Subscription</h2>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item lines="none" menulinks routerLink="/notifications" detail="false">
+      <ion-label>
+        <h2>Notifications</h2>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item lines="none" menulinks routerLink="/forum" detail="false">
+      <ion-label>
+        <h2>Forum</h2>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item lines="none" menulinks routerLink="/downloads" detail="false">
+      <ion-label>
+        <h2>Downloads</h2>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <!-- <ion-item
+      lines="none"
+      menulinks
+      routerLink="/favorite-exercises"
+      detail="false"
+    >
+      <ion-label>
+        <h2>Favourite</h2>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-buttons>
+    </ion-item> -->
+    <ion-item
+      lines="none"
+      menulinks
+      routerLink="/privacy-policy/terms"
+      detail="false"
+    >
+      <ion-label>
+        <h2>Terms & Conditions</h2>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item
+      lines="none"
+      menulinks
+      routerLink="/privacy-policy/privacy"
+      detail="false"
+    >
+      <ion-label>
+        <h2>Privacy Policy</h2>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <!-- <ion-item lines="none"  menulinks routerLink="/scheduleexercise"  detail="false">
+         <ion-label>
+            <h2>Schedule Exercise</h2>
+         </ion-label>
+         <ion-buttons  slot="end">
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+         </ion-buttons>
+      </ion-item> -->
+    <ion-item
+      lines="none"
+      menulinks
+      routerLink="/workoutprogress"
+      detail="false"
+    >
+      <ion-label>
+        <h2>Workout Progress</h2>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+
+    <ion-item lines="none" menulinks (click)="goto('/history')" detail="false">
+      <ion-label>
+        <h2>History</h2>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+
+    <ion-item
+      lines="none"
+      menulinks
+      routerLink="/login"
+      (click)="logout()"
+      detail="false"
+    >
+      <ion-label>
+        <h2>Logout</h2>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+  </div>
+</ion-content>

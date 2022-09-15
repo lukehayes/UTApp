@@ -1,0 +1,56 @@
+<ion-header mode="md">
+  <ion-toolbar color="primary">
+    <ion-back-button
+      text=""
+      icon="chevron-back-outline"
+      slot="start"
+      routerLink="/tabs/settings"
+    ></ion-back-button>
+    <ion-title class="ion-text-center">Messages</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div message-sec>
+    <div class="search">
+      <ion-searchbar
+        placeholder="Search Here..."
+        [(ngModel)]="term"
+      ></ion-searchbar>
+    </div>
+    <ion-list>
+      <ion-item
+        class="norecordfound"
+        lines="none"
+        *ngIf="messageListData?.length == 0"
+      >
+        No Chat Found.
+      </ion-item>
+      <ion-item
+        lines="none"
+        routerLink="/chat/{{doc.
+			usr_id}}"
+        *ngFor="let doc of messageListData | filter:term; let i = index; "
+      >
+        <ion-avatar slot="start">
+          <img
+            src="assets/img/default.png"
+            alt=""
+            *ngIf="errors.indexOf(doc.recieveruser.image) >= 0"
+          />
+          <img
+            src="{{IMAGES_URL + doc.recieveruser.image}}"
+            alt=""
+            *ngIf="errors.indexOf(doc.recieveruser.image) == -1"
+          />
+        </ion-avatar>
+        <ion-label>
+          <h4>Admin</h4>
+          <p>{{doc.message.message}}</p>
+        </ion-label>
+        <div date-sec slot="end">
+          <p>{{doc.message.created_on | date: 'short'}}</p>
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

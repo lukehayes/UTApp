@@ -1,0 +1,175 @@
+ion-header
+{
+	&:after
+	{
+	    display:none;
+	}
+    ion-toolbar
+    {
+		--border-width:0px;
+		ion-back-button 
+		{
+			--icon-font-size: 25px;
+			position: relative;
+			left: 15px;
+			color: var(--ion-color-white);
+		}
+		ion-title
+		{
+			font-size: 16px;
+			font-weight: 600;
+			color: var(--ion-color-white);
+		}		
+    }
+}
+ion-content
+{
+	--background:var(--ion-color-black);
+    [nutrition-detail-sec]
+	{
+	    padding: 30px 18px 20px;
+	    ion-card
+		{
+			box-shadow: none;
+			border-radius: 18px;
+			margin: 0px;
+            outline: 0px;
+			position: relative;
+			z-index: 1;			
+			img 
+			{
+				min-height: 180px;
+				max-height: 180px;
+				width: 100%;
+				object-fit: cover;
+				display: block;
+			}
+            &:after
+            {
+			    position: absolute;
+				content: "";
+				top:0px;
+				left:0px;
+				right:0px;
+				bottom: 0px;
+				background: var(--ion-color-black);
+				opacity: 0.5;
+			}
+            [nutritionplan]
+            {
+			    position: absolute;
+				bottom: 15px;
+				left: 15px;
+				right:15px;
+			    z-index: 1;	
+				h3
+				{
+				    margin:0px 0px 5px;
+					font-size: 14px;
+					font-weight: 600;
+					color: var(--ion-color-white);
+				}
+				p
+				{
+				    margin:0px;
+					font-size: 13px;
+					font-weight: 400;
+					color: var(--ion-color-white);
+				}
+			}			
+		}
+		[workout-content]
+		{
+		    margin-top: 20px;    
+			[main-head]
+			{
+				position:relative;
+				z-index: 1;
+				margin: 0px;
+				font-size: 17px;
+				line-height: 24px;
+				color: var(--ion-color-white);
+				font-weight: 600;
+				padding: 5px 0px 0px;
+			}
+			p
+			{
+				margin: 7px 0px 0px;
+				font-size: 13px;
+				line-height: 23px;
+				color: var(--ion-color-white);			    
+			}
+		}
+        [nutrition-tagsec]
+        {
+		    display: flex;
+			flex-wrap: wrap;
+			padding: 30px 0px 0px;
+			span
+			{
+			    display: inline-block;
+				font-size: 12px;
+				font-weight: 400;
+				color: var(--ion-color-white);
+				background: #181a1d;
+				padding: 8px 10px;
+				border-radius: 5px;
+				box-shadow: 0px 4px 13px 0px rgba(0,0,0,0.06);
+				margin: 0px 12px 12px 0px;
+			}
+		}
+		[nutritionplan-img]
+		{
+			margin: 20px 0px;   
+			padding: 0px;		
+			[main-head]
+			{
+				position:relative;
+				z-index: 1;
+				margin: 0px 0px 15px;
+				font-size: 17px;
+				line-height: 24px;
+				color: var(--ion-color-white);
+				font-weight: 600;
+				padding: 0px;
+			}
+			ion-slides
+			{
+				ion-slide
+				{
+					[workout-sec]
+					{
+						width: 100%;
+						[workout-img]
+						{
+							background: var(--ion-color-grey4);
+							border-radius: 8px;
+							position: relative;
+							z-index: 1;
+							overflow: hidden;
+							&:after
+							{
+								position: absolute;
+								content: "";
+								top:0px;
+								left:0px;
+								right:0px;
+								bottom: 0px;
+								background: var(--ion-color-black);
+								opacity: 0.25;
+							}							
+							img
+							{
+								width: 100%;
+								min-height: 175px;
+								max-height: 175px;
+								object-fit: cover;
+								display: block;
+							}
+						}
+					}
+				}
+			}
+		}		
+	}	
+}	

@@ -1,0 +1,333 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-back-button
+      slot="start"
+      routerLink="/tabs/settings"
+      text=""
+      icon="chevron-back-outline"
+    ></ion-back-button>
+    <ion-title class="ion-text-center">Edit Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <div profiledetails>
+    <div userimg>
+      <img
+        *ngIf="errors.indexOf(image) == -1 && errors.indexOf(live_image_url) >= 0"
+        [src]="IMAGES_URL + image"
+      />
+      <img
+        *ngIf="errors.indexOf(live_image_url) == -1"
+        [src]="sanitizer.bypassSecurityTrustResourceUrl(win.Ionic.WebView.convertFileSrc(live_image_url))"
+      />
+      <img
+        *ngIf="errors.indexOf(image) >= 0 && errors.indexOf(live_image_url) >= 0"
+        [src]="'/assets/img/default.png'"
+      />
+      <label for="editphoto">
+        <ion-icon name="camera-outline" (click)="selectImage()"></ion-icon>
+      </label>
+    </div>
+    <ion-segment mode="md" [(ngModel)]="profiletab">
+      <ion-segment-button value="basic"> Basic Info </ion-segment-button>
+      <ion-segment-button value="password">
+        Change Password
+      </ion-segment-button>
+    </ion-segment>
+    <div [ngSwitch]="profiletab">
+      <ion-list *ngSwitchCase="'basic'">
+        <form [formGroup]="authForm">
+          <div formgroup>
+            <label>Name</label>
+            <ion-item lines="none" class="ion-no-padding">
+              <ion-input
+                type="text"
+                placeholder="Enter  Name"
+                formControlName="name"
+              >
+              </ion-input>
+            </ion-item>
+            <span error *ngIf="isControlHasError('name','required')"
+              >Please enter name</span
+            >
+          </div>
+          <div formgroup>
+            <label>Email Address </label>
+            <ion-item lines="none" class="ion-no-padding">
+              <ion-input
+                type="email"
+                placeholder="Enter  Email Address"
+                formControlName="email"
+              >
+              </ion-input>
+              <ion-icon slot="end" name="checkmark-outline"></ion-icon>
+            </ion-item>
+            <span error *ngIf="isControlHasError('email','required')"
+              >Please enter email</span
+            >
+            <span error *ngIf="isControlHasError('email','pattern')"
+              >Please enter valid email</span
+            >
+          </div>
+          <div formgroup>
+            <label>Gender </label>
+            <ion-item lines="none" class="ion-no-padding">
+              <ion-select
+                formControlName="gender"
+                [interfaceOptions]="customAlertOptions"
+                interface="alert"
+              >
+                <ion-select-option value="Male"> Male </ion-select-option>
+                <ion-select-option value="Female"> Female </ion-select-option>
+                <ion-select-option value="Other"> Other </ion-select-option>
+              </ion-select>
+            </ion-item>
+            <span error *ngIf="isControlHasError('gender','required')"
+              >Please enter gender</span
+            >
+          </div>
+          <div formgroup>
+            <label>Weight </label>
+            <ion-row>
+              <ion-col size="9" pl-0>
+                <ion-item lines="none" class="ion-no-padding">
+                  <ion-input
+                    type="text"
+                    placeholder="Enter  Weight"
+                    formControlName="weight"
+                  >
+                  </ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col size="3" pr-0>
+                <ion-item lines="none" class="ion-no-padding">
+                  <ion-select
+                    formControlName="weight_str"
+                    [interfaceOptions]="customAlertOptions1"
+                    interface="alert"
+                  >
+                    <ion-select-option value="kg"> Kg </ion-select-option>
+                    <ion-select-option value="lbs"> Lbs </ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+            <span error *ngIf="isControlHasError('weight','required')"
+              >Please enter weight</span
+            >
+          </div>
+          <div formgroup>
+            <label>Height </label>
+            <ion-row>
+              <ion-col size="12" pl-0>
+                <ion-item lines="none" class="ion-no-padding">
+                  <ion-input
+                    type="text"
+                    placeholder="Enter  Height"
+                    formControlName="height"
+                  >
+                  </ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+            <span error *ngIf="isControlHasError('height','required')"
+              >Please enter height</span
+            >
+          </div>
+          <div formgroup>
+            <label>DOB</label>
+            <ion-item
+              lines="none"
+              class="ion-no-padding"
+              style="border-bottom: 0"
+            >
+              <ion-row class="dob">
+                <ion-col size="3">
+                  <div class="agepicker" (click)="showPicker('day')">
+                    <span *ngIf="day == ''">Day</span>
+                    <span *ngIf="day != ''">{{day}}</span>
+                    <ion-icon name="chevron-down-outline"></ion-icon>
+                  </div>
+                </ion-col>
+                <ion-col size="5">
+                  <div class="agepicker" (click)="showPicker('month')">
+                    <span *ngIf="month == ''">Month</span>
+                    <span *ngIf="month != ''">{{month}}</span>
+                    <ion-icon name="chevron-down-outline"></ion-icon>
+                  </div>
+                </ion-col>
+                <ion-col size="4">
+                  <div class="agepicker" (click)="showPicker('year')">
+                    <span *ngIf="year == ''">Year</span>
+                    <span *ngIf="year != ''">{{year}}</span>
+                    <ion-icon name="chevron-down-outline"></ion-icon>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-item>
+            <span error *ngIf="isControlHasError('age','required')"
+              >Please enter your age</span
+            >
+          </div>
+          <div formgroup>
+            <label>Activity Level </label>
+            <ion-item lines="none" class="ion-no-padding">
+              <ion-select
+                formControlName="activity"
+                [interfaceOptions]="customAlertOptions3"
+                interface="alert"
+              >
+                <ion-select-option
+                  *ngFor="let doc of response?.data"
+                  value="{{doc._id}}"
+                  >{{doc.name}}</ion-select-option
+                >
+              </ion-select>
+            </ion-item>
+            <span error *ngIf="isControlHasError('activity','required')"
+              >Please enter activity</span
+            >
+          </div>
+
+          <ion-button
+            type="button"
+            (click)="submit()"
+            color="primary"
+            activity
+            shape="round"
+            expand="full"
+          >
+            Submit
+          </ion-button>
+        </form>
+      </ion-list>
+      <ion-list *ngSwitchCase="'password'">
+        <form [formGroup]="authPassForm">
+          <div formgroup>
+            <label>Current Password </label>
+            <ion-item lines="none" class="ion-no-padding">
+              <ion-input
+                type="{{currPassType}}"
+                placeholder="Enter  Current Password"
+                formControlName="password"
+              >
+              </ion-input>
+
+              <button
+                class="ico-eye"
+                slot="end"
+                *ngIf="currPassType == 'password'"
+              >
+                <span>
+                  <ion-icon name="eye-off" (click)="changeType(1)"></ion-icon>
+                </span>
+              </button>
+
+              <button class="ico-eye" slot="end" *ngIf="currPassType == 'text'">
+                <span>
+                  <ion-icon name="eye" (click)="changeType(1)"></ion-icon>
+                </span>
+              </button>
+            </ion-item>
+            <span error *ngIf="isControlHasErrorPass('password','required')"
+              >Please enter password</span
+            >
+            <span error *ngIf="isControlHasErrorPass('password','pattern')"
+              >Password must contain atleast 6 characters</span
+            >
+          </div>
+          <div formgroup>
+            <label>New Password </label>
+            <ion-item lines="none" class="ion-no-padding" pwdicon>
+              <ion-input
+                type="{{confirmPassType}}"
+                placeholder="Enter  New Password"
+                formControlName="confirm_password"
+              >
+              </ion-input>
+            </ion-item>
+            <button
+              class="ico-eye"
+              slot="end"
+              *ngIf="confirmPassType == 'password'"
+            >
+              <span>
+                <ion-icon name="eye-off" (click)="changeType(2)"></ion-icon>
+              </span>
+            </button>
+
+            <button
+              class="ico-eye"
+              slot="end"
+              *ngIf="confirmPassType == 'text'"
+            >
+              <span>
+                <ion-icon name="eye" (click)="changeType(2)"></ion-icon>
+              </span>
+            </button>
+            <span
+              error
+              *ngIf="isControlHasErrorPass('confirm_password','required')"
+              >Please enter confirm password</span
+            >
+            <span
+              error
+              *ngIf="isControlHasErrorPass('confirm_password','pattern')"
+              >Password must contain atleast 6 characters</span
+            >
+          </div>
+          <div formgroup>
+            <label>Confirm New Password </label>
+            <ion-item lines="none" class="ion-no-padding" pwdicon>
+              <ion-input
+                type="{{newConfirmPassType}}"
+                placeholder="Enter   New Password"
+                formControlName="confirm_new_password"
+              >
+              </ion-input>
+            </ion-item>
+            <button
+              class="ico-eye"
+              slot="end"
+              *ngIf="newConfirmPassType == 'password'"
+            >
+              <span>
+                <ion-icon name="eye-off" (click)="changeType(3)"></ion-icon>
+              </span>
+            </button>
+
+            <button
+              class="ico-eye"
+              slot="end"
+              *ngIf="newConfirmPassType == 'text'"
+            >
+              <span>
+                <ion-icon name="eye" (click)="changeType(3)"></ion-icon>
+              </span>
+            </button>
+            <span
+              error
+              *ngIf="isControlHasErrorPass('confirm_new_password','required')"
+              >Please enter confirm new password</span
+            >
+
+            <span
+              error
+              *ngIf="errors.indexOf(authPassForm.value.confirm_new_password) == -1 && is_submit_pass == true && authPassForm.value.confirm_password!= authPassForm.value.confirm_new_password"
+              >Please enter correct password</span
+            >
+          </div>
+          <ion-button
+            type="button"
+            (click)="submit()"
+            color="primary"
+            shape="round"
+            expand="full"
+          >
+            Submit
+          </ion-button>
+        </form>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>

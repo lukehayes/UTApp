@@ -1,0 +1,119 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <!-- <ion-back-button  slot="start" text=""  icon="chevron-back-outline"></ion-back-button> -->
+    <ion-icon
+      style="
+        font-size: 20px;
+        position: absolute;
+        margin-left: 10px;
+        z-index: 999;
+      "
+      (click)="gobackone()"
+      name="chevron-back-outline"
+    ></ion-icon>
+    <ion-title class="ion-text-center">Get started today!</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="tp-tgl">
+    <span white> Monthly</span
+    ><ion-toggle (ionChange)="changePackage($event)" [(ngModel)]="toggle">
+    </ion-toggle
+    ><span white>Yearly</span>
+  </div>
+
+  <!-- <span
+    *ngIf="response_payment?.status == 1"
+    (click)="changestatus1()"
+    class="activesubsc"
+  >
+    Active Subscription</span
+  > -->
+  <div pricing-sec>
+    <div pricing-img>
+      <img src="assets/img/pricing-bg.png" alt="" />
+    </div>
+
+    <div pricing-mn [ngClass]="!monthly ? 'showClassDiv' : 'hideClassDiv'">
+      <ion-slides pager="false" [options]="slideOpts3" #slides>
+        <ion-slide
+          *ngFor="let doc of monthlyPackages;let i = index;"
+          (click)="selectPackage(doc,i)"
+        >
+          <span active *ngIf="doc.active == 1">Active</span>
+          <div price-content>
+            <label>
+              <h6>{{doc.name}}</h6>
+              <h3><sup>£</sup>{{doc.price}}</h3>
+              <h4>Monthly</h4>
+              <p>It includes <b>{{doc.trial}}</b> free trial</p>
+              <p *ngIf="doc.name == 'Standard'">
+                it includes health nutrition, member chat, exercise video
+                library.
+              </p>
+              <p *ngIf="doc.name == 'Premium'">
+                it includes monthly plans features plus record progress, custom
+                workout, schedule exercises.
+              </p>
+              <span checkboxbtn *ngIf="selectedIndex == i && doc.active == 0"
+                ><ion-icon name="checkmark-outline"></ion-icon
+              ></span>
+            </label>
+          </div>
+        </ion-slide>
+      </ion-slides>
+    </div>
+
+    <div pricing-mn [ngClass]="monthly ? 'showClassDiv' : 'hideClassDiv'">
+      <ion-slides pager="false" [options]="slideOpts3" #slidesyear>
+        <ion-slide
+          *ngFor="let doc of yearlyPackages;let i = index;"
+          (click)="selectPackageYear(doc,i)"
+        >
+          <span active *ngIf="doc.active == 1">Active</span>
+          <div price-content>
+            <label>
+              <h6>{{doc.name}}</h6>
+              <h3><sup>£</sup>{{doc.price}}</h3>
+              <h4>Yearly</h4>
+              <p>It includes <b>{{doc.trial}}</b> free trial</p>
+              <p *ngIf="doc.name == 'Standard'">
+                it includes health nutrition, member chat, exercise video
+                library.
+              </p>
+              <p *ngIf="doc.name == 'Premium'">
+                it includes monthly plans features plus record progress, custom
+                workout, schedule exercises.
+              </p>
+              <span
+                checkboxbtn
+                *ngIf="selectedIndexYear == i && doc.active == 0"
+                ><ion-icon name="checkmark-outline"></ion-icon
+              ></span>
+            </label>
+          </div>
+        </ion-slide>
+      </ion-slides>
+    </div>
+    <div pricing-btn>
+      <ion-button
+        color="primary"
+        shape="round"
+        expand="full"
+        (click)="gotopayment()"
+      >
+        Choose & Pay
+      </ion-button>
+
+      <p>
+        <a
+          href="javascript:void(0)"
+          (click)="goBack()"
+          *ngIf="errors.indexOf(userId) == -1 && (freetrial == 'yes' || subsexits == 'yes')"
+          >Skip</a
+        >
+      </p>
+    </div>
+  </div>
+</ion-content>

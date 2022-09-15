@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-back-button
+      text=""
+      icon="chevron-back-outline"
+      slot="start"
+      defaultHref="/tabs/workoutselection"
+    >
+    </ion-back-button>
+    <ion-title class="ion-text-center">Program Abilities</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div program-abilities *ngIf="response?.data?.length > 0">
+    <ion-card
+      [ngStyle]="{'background': 'url(' + IMAGES_URL + doc.image + ')', 'background-size': 'cover'}"
+      *ngFor="let doc of response?.data; let i = index;"
+      routerLink="/all-workout/{{doc._id}}"
+    >
+      <ion-card-content>
+        <h3>{{doc.title}}</h3>
+        <div content-sec>
+          <ul>
+            <li>{{doc.total_exercise}} Excercise</li>
+            <li>Total time: {{doc.totalduration}} minutes</li>
+          </ul>
+          <ion-button slot="end">Try</ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div
+    *ngIf="response?.data?.length == 0"
+    norecord
+    style="padding: 15px; margin: 20px"
+  >
+    No record found
+  </div>
+</ion-content>

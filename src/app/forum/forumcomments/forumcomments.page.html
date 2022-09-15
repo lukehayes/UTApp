@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-back-button
+      slot="start"
+      defaultHref="/tabs/settings"
+      text=""
+      icon="chevron-back-outline"
+    ></ion-back-button>
+    <ion-title class="ion-text-center">Forum Detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <div hrbottom *ngIf="errors.indexOf(detail?.data) == -1">
+    <ion-label>
+      <h1>{{detail?.data?.title}}</h1>
+    </ion-label>
+    <ion-item lines="none">
+      <ion-avatar>
+        <img
+          src="assets/img/default.png"
+          *ngIf="errors.indexOf(detail?.data?.userinfo?.image) >= 0" />
+        <img
+          src="{{IMAGES_URL + detail?.data?.userinfo?.image}}"
+          *ngIf="errors.indexOf(detail?.data?.userinfo?.image) == -1"
+      /></ion-avatar>
+      <ion-label>
+        <p>
+          <!-- <b>{{detail?.data?.userinfo?.name}}</b> -->
+          <b *ngIf=" errors.indexOf(detail?.data?.userId) >= 0">Admin</b>
+          <b *ngIf=" errors.indexOf(detail?.data?.userId) == -1"
+            >{{detail?.data?.userinfo?.name}}</b
+          >
+          {{timeSince(detail?.data?.created_on)}}
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-text>
+        <p [innerHTML]="detail?.data?.description"></p>
+      </ion-text>
+    </ion-item>
+    <ion-item lines="none" class="ion-no-padding" likesBox>
+      <ion-label>
+        <span>
+          <ion-icon
+            name="heart-outline"
+            *ngIf="detail?.data?.like == 0"
+          ></ion-icon>
+          <ion-icon name="heart" *ngIf="detail?.data?.like == 1"></ion-icon>
+          {{detail?.data?.like_count}}
+          <!-- <ion-icon name="heart-outline"></ion-icon> -->
+        </span>
+        <span ml5>
+          <ion-icon name="chatbubble-outline"></ion-icon>
+          {{detail?.data?.comment_count}}
+        </span>
+      </ion-label>
+    </ion-item>
+  </div>
+
+  <ng-container *ngIf="commentList?.length>0">
+    <div hrbottom *ngFor="let doc of commentList; let i = index;">
+      <ion-item lines="none">
+        <ion-avatar>
+          <img
+            src="assets/img/default.png"
+            *ngIf="errors.indexOf(doc.userinfo.image) >= 0"
+          />
+          <img
+            src="{{IMAGES_URL + doc.userinfo.image}}"
+            *ngIf="errors.indexOf(doc.userinfo.image) == -1"
+          />
+        </ion-avatar>
+        <ion-label>
+          <p><b>{{doc.userinfo.name}}</b> {{timeSince(doc.created_on)}}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-text>
+          <p>{{doc.comment}}</p>
+        </ion-text>
+      </ion-item>
+    </div>
+  </ng-container>
+</ion-content>
+
+<ion-footer>
+  <ion-item lines="none">
+    <ion-input placeholder="Comment....." [(ngModel)]="comment"></ion-input>
+    <ion-button (click)="addComment()">
+      <ion-icon name="send"></ion-icon>
+    </ion-button>
+  </ion-item>
+</ion-footer>

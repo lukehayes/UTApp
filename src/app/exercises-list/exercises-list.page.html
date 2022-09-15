@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">Exercises List</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="padding">
+  <div workingdetails style="padding: 10px">
+    <!-- <h2 heading>Exercises</h2> -->
+    <ion-list>
+      <ion-item
+        lines="none"
+        *ngFor="let doc of response?.data;let i = index;"
+        (click)="gotoexercise(doc)"
+      >
+        <ion-thumbnail slot="start">
+          <img
+            src="{{IMAGES_URL + doc.image}}"
+            alt=""
+            *ngIf="errors.indexOf(doc.image) == -1"
+          />
+          <img
+            src="assets/img/noimage.png"
+            alt=""
+            *ngIf="errors.indexOf(doc.image) >= 0"
+          />
+        </ion-thumbnail>
+
+        <ion-label>
+          <h4>{{doc.title}}</h4>
+        </ion-label>
+        <ion-badge *ngIf="doc.bonus_video == '1'"> Bonus</ion-badge>
+        <span class="arrow-ri"
+          ><ion-icon name="chevron-forward-outline"></ion-icon>
+        </span>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

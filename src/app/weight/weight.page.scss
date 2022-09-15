@@ -1,0 +1,149 @@
+ion-header {
+  &:after {
+    display: none;
+  }
+  ion-toolbar {
+    --border-width: 0px;
+    ion-back-button {
+      --icon-font-size: 25px;
+      color: var(--ion-color-white);
+    }
+    ion-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ion-color-white);
+    }
+  }
+}
+ion-content {
+  --padding-bottom: 0;
+  --background: var(--ion-color-black);
+  [weight-sec] {
+    [weight-img] {
+      text-align: center;
+      padding: 40px 0px 30px;
+      img {
+        max-width: 100px;
+      }
+    }
+    [radiolist] {
+      margin: 0px 10px 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      [radioinner] {
+        text-align: center;
+        label {
+          position: relative;
+          margin: 0px 5px;
+          background: var(--ion-color-dark);
+          color: var(--ion-color-white);
+          display: inline-block;
+          padding: 11px 25px;
+          border-radius: 7px;
+          font-size: 14px;
+          font-weight: 600;
+        }
+        input[type="radio"]:checked + label {
+          background: var(--ion-color-gradient);
+        }
+      }
+    }
+    [rangeslider] {
+      width: 100%;
+      [rangeslidevalue] {
+        margin: 0px 0px 7px;
+        font-weight: 600;
+        color: var(--ion-color-white);
+        font-size: 32px;
+        text-align: center;
+        span {
+          font-weight: 400;
+          font-size: 16px;
+        }
+      }
+      ion-range {
+        --height: 9px;
+        padding: 0px;
+        --knob-background: url(../../assets/img/pin.svg) no-repeat 7px/18px;
+        /*--ion-color-base: var(--ion-color-white)!important;*/
+        --knob-border-radius: 0;
+        --bar-height: 0;
+        --knob-size: 31px;
+
+        // 	--height: 16px;
+        // /* width: 41px; */
+        // padding: 0px;
+        // --knob-background: url(pin.png) no-repeat 5px/26px;
+        // --knob-border-radius: 0;
+        // --bar-height: 0;
+        // --knob-size: 31px;
+
+        .range-knob {
+          transform: scale(1.2) !important;
+        }
+      }
+
+      // Customize Slider
+      #tickmarks {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      #tickmarks p {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        width: 2px;
+        background: var(--ion-color-white);
+        height: 15px;
+        line-height: 40px;
+        margin: 0 2px 0px 0;
+        font-size: 0px;
+        &:nth-child(6) {
+          height: 25px;
+        }
+        &:nth-child(12) {
+          height: 25px;
+        }
+        &:nth-child(18) {
+          height: 25px;
+        }
+        &:nth-child(24) {
+          height: 40px;
+        }
+        &:nth-child(30) {
+          height: 25px;
+        }
+        &:nth-child(36) {
+          height: 25px;
+        }
+        &:nth-child(42) {
+          height: 25px;
+        }
+      }
+    }
+  }
+}
+ion-footer {
+  background: var(--ion-color-black);
+  padding: 15px;
+  &:before {
+    display: none;
+  }
+  ion-button {
+    --box-shadow: none;
+    min-height: 57px;
+    --background: var(--ion-color-primary);
+    --ion-color-base: var(--ion-color-primary) !important;
+    --border-radius: 15px;
+    color: var(--ion-color-white);
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 auto;
+    text-transform: capitalize;
+    width: calc(100% - 55px);
+  }
+}

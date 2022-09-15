@@ -1,0 +1,171 @@
+<ion-header>
+  <ion-toolbar color="primary">
+  <ion-back-button text="" icon="chevron-back-outline" slot="start" routerLink="/tabs/settings">
+  </ion-back-button> 	
+    <ion-title class="ion-text-center">Downloads</ion-title>
+  </ion-toolbar>
+  <div profiledetails>
+
+    <!-- <video width="100%" height="100%" controls>
+         <source [src]="sanitizer.bypassSecurityTrustResourceUrl(source)">
+      </video> -->
+    <ion-segment mode="md" [(ngModel)]="profiletab">
+      <ion-segment-button value="video">
+        Video
+      </ion-segment-button>
+      <ion-segment-button value="pdf">
+        PDF
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+</ion-header>
+<ion-content>
+  <div profiledetails>
+  
+    <div [ngSwitch]="profiletab" >
+
+      <!-- <video width="100%" height="100%" controls>
+        <source src="file:///storage/emulated/0/UnconventionalApp/1645599094414video.webm" >
+      </video>
+      <video width="100%" height="100%" controls>
+         <source src="http://techslides.com/demos/sample-videos/small.mp4" type="video/mp4">
+      </video> -->
+       <ion-list *ngSwitchCase="'video'" class="ion-no-padding ion-no-margin">
+        <div exercises-sec>
+          <ion-card class="bg1" *ngFor="let data of filesArry; let i = index;">
+            <ion-button favourite-icon><ion-icon name="heart"></ion-icon></ion-button>
+            <ion-card-content>
+                <h3>Barbell Bench Press</h3>
+              <div playbtn>
+                  <a href="javascript:void(0)"><ion-icon name="play"></ion-icon></a>
+              </div>
+              <div content-sec>
+
+                <!-- <video [src]="data">
+                </video>
+                <video [src]="sanitizer.bypassSecurityTrustResourceUrl(win.Ionic.WebView.convertFileSrc(data))">
+                </video> -->
+                <!-- <ul>
+                  <li><img src="assets/img/icon1.png" alt="" />3 Sets</li>
+                  <li><img src="assets/img/icon2.png" alt="" />Total Time 15 min</li>
+                </ul> -->
+              </div>
+            </ion-card-content>
+          </ion-card>
+          <ion-card class="bg2">
+            <ion-button favourite-icon><ion-icon name="heart"></ion-icon></ion-button>
+            <ion-card-content routerLink="/exercise-details">
+                <h3>Incline Bench Press</h3>
+              <div playbtn>
+                  <a href="javascript:void(0)"><ion-icon name="play"></ion-icon></a>
+              </div>
+              <div content-sec>
+                <ul>
+                  <li><img src="assets/img/icon1.png" alt="" />3 Sets</li>
+                  <li><img src="assets/img/icon2.png" alt="" />Total Time 15 min</li>
+                </ul>
+              </div>
+            </ion-card-content>
+          </ion-card>
+          <ion-card class="bg3">
+            <ion-button favourite-icon><ion-icon name="heart"></ion-icon></ion-button>
+            <ion-card-content routerLink="/exercise-details">
+                <h3>Pushups</h3>
+              <div playbtn>
+                  <a href="javascript:void(0)"><ion-icon name="play"></ion-icon></a>
+              </div>
+              <div content-sec>
+                <ul>
+                  <li><img src="assets/img/icon1.png" alt="" />4 Sets</li>
+                  <li><img src="assets/img/icon2.png" alt="" />Total Time 15 min</li>
+                </ul>
+              </div>
+            </ion-card-content>
+          </ion-card>
+          <ion-card class="bg4">
+            <ion-button favourite-icon><ion-icon name="heart"></ion-icon></ion-button>
+            <ion-card-content routerLink="/exercise-details">
+                <h3>Dips</h3>
+              <div playbtn>
+                  <a href="javascript:void(0)"><ion-icon name="play"></ion-icon></a>
+              </div>
+              <div content-sec>
+                <ul>
+                  <li><img src="assets/img/icon1.png" alt="" />3 Sets</li>
+                  <li><img src="assets/img/icon2.png" alt="" />Total Time 15 min</li>
+                </ul>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </div>
+       </ion-list>
+       <ion-list *ngSwitchCase="'pdf'" class="ion-no-padding ion-no-margin">
+        <div exercises-sec exbox>
+          <ion-card>
+            <ion-card-content>
+                <h3>Barbell Bench Press</h3>
+              <div content-sec>
+                <ul>
+                  <li><img src="assets/img/icon1.png" alt="" />3 Sets</li>
+                  <li><img src="assets/img/icon2.png" alt="" />Total Time 15 min</li>
+                </ul>
+              </div>
+            </ion-card-content>
+          </ion-card>
+          
+          <ion-card>
+            <ion-card-content>
+                <h3>Incline Bench Press</h3>
+              <div content-sec>
+                <ul>
+                  <li><img src="assets/img/icon1.png" alt="" />3 Sets</li>
+                  <li><img src="assets/img/icon2.png" alt="" />Total Time 15 min</li>
+                </ul>
+              </div>
+            </ion-card-content>
+          </ion-card>
+
+          <ion-card>
+            <ion-card-content>
+                <h3>Pushups</h3>
+              <div content-sec>
+                <ul>
+                  <li><img src="assets/img/icon1.png" alt="" />3 Sets</li>
+                  <li><img src="assets/img/icon2.png" alt="" />Total Time 15 min</li>
+                </ul>
+              </div>
+            </ion-card-content>
+          </ion-card>
+
+          <ion-card>
+            <ion-card-content>
+                <h3>Barbell Bench Press copy</h3>
+              <div content-sec>
+                <ul>
+                  <li><img src="assets/img/icon1.png" alt="" />3 Sets</li>
+                  <li><img src="assets/img/icon2.png" alt="" />Total Time 15 min</li>
+                </ul>
+              </div>
+            </ion-card-content>
+          </ion-card>
+
+          <ion-card>
+            <ion-card-content>
+                <h3>Incline Bench Press copy</h3>
+              <div content-sec>
+                <ul>
+                  <li><img src="assets/img/icon1.png" alt="" />3 Sets</li>
+                  <li><img src="assets/img/icon2.png" alt="" />Total Time 15 min</li>
+                </ul>
+              </div>
+            </ion-card-content>
+          </ion-card>
+
+        </div>
+       </ion-list>
+    </div>
+ </div>
+
+
+
+</ion-content>

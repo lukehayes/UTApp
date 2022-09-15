@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-back-button
+      text=""
+      icon="chevron-back-outline"
+      slot="start"
+      routerLink="/gender"
+    ></ion-back-button>
+    <ion-title class="ion-text-center">Select Your Weight?</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <div weight-sec>
+    <div weight-img>
+      <img src="assets/img/weight1.png" alt="" />
+    </div>
+    <div radiolist>
+      <div radioinner>
+        <input
+          type="radio"
+          id="lbs"
+          checked
+          name="radio"
+          style="display: none"
+          value="lbs"
+          (click)="changeValue('lbs')"
+        />
+        <label for="lbs"> lbs </label>
+      </div>
+      <div radioinner>
+        <input
+          type="radio"
+          id="kg"
+          name="radio"
+          style="display: none"
+          value="kg"
+          (click)="changeValue('kg')"
+        />
+        <label for="kg"> Kg </label>
+      </div>
+    </div>
+    <div rangeslider>
+      <h3 rangeslidevalue *ngIf="string == 'kg'">{{weight}} <span>kg</span></h3>
+
+      <h3 rangeslidevalue *ngIf="string == 'lbs'">
+        {{weight}} <span>lbs</span>
+      </h3>
+      <div id="tickmarks">
+        <p
+          *ngFor="let number of [0,1, 2, 3, 4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,42,44,45,46]"
+        >
+          {{number}}
+        </p>
+      </div>
+
+      <ion-range
+        mode="md"
+        class="range-position"
+        min="5"
+        max="400"
+        snaps
+        list="tickmarks"
+        [(ngModel)]="weight"
+        (ionChange)="change($event)"
+      >
+      </ion-range>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-button (click)="submit()" color="primary" shape="round" expand="full">
+    Next
+  </ion-button>
+</ion-footer>

@@ -1,0 +1,96 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">Calender</ion-title>
+    <ion-thumbnail slot="end" (click)="checkSubs('icon', '', '')">
+      <img src="assets/img/timew.png" style="width: 30px; height: auto" />
+    </ion-thumbnail>
+  </ion-toolbar>
+
+  <div *ngIf="!status" class="weeks">
+    <p class="ion-text-center ion-justify-items-center ion-align-items-center">
+      {{current_month}} {{current_year}}
+    </p>
+    <p>
+      <ion-row>
+        <ion-col
+          *ngFor="let doc of dateLabels; let i = index;"
+          [ngClass]="{ 'active': activeButton == i }"
+          (click)="select_date(doc, i)"
+        >
+          <p>{{doc.first_letter}}</p>
+          <p>{{doc.date_only}}</p>
+        </ion-col>
+      </ion-row>
+    </p>
+  </div>
+  <ion-calendar
+    [ngClass]="status ? 'showClass' : 'hideClass'"
+    [(ngModel)]="dateRange"
+    [options]="optionsRange"
+    [type]="type"
+    [format]="'YYYY-MM-DD'"
+    *ngIf="status"
+    (change)="onChange($event)"
+  >
+  </ion-calendar>
+  <div class="ion-text-center showMnth" (click)="showMnth()">
+    {{msg1 ? 'Show Week' : 'Show Month'}}
+  </div>
+</ion-header>
+<ion-content>
+  <div exercises-sec>
+    <ion-card
+      *ngFor="let doc of response?.data;let i = index;"
+      [ngStyle]="{'background': 'url(' + IMAGES_URL + doc.exer.image + ')', 'background-size': 'cover'}"
+    >
+      <ion-button
+        favourite-icon
+        *ngIf="doc.fav == 0"
+        (click)="checkSubs('fav',doc, i)"
+        ><ion-icon name="heart-outline"></ion-icon
+      ></ion-button>
+
+      <ion-button
+        favourite-icon
+        *ngIf="doc.fav == 1"
+        (click)="checkSubs('unfav',doc, i)"
+        ><ion-icon name="heart"></ion-icon
+      ></ion-button>
+
+      <ion-card-content routerLink="/exercise-details/{{doc.exer._id}}">
+        <h3>{{doc.exer.title}}</h3>
+        <div playbtn>
+          <a href="javascript:void(0)"><ion-icon name="play"></ion-icon></a>
+        </div>
+        <div content-sec>
+          <ul>
+            <li>
+              <img src="assets/img/icon1.png" alt="" />{{doc.exer.sets.length}}
+              Sets
+            </li>
+            <li>
+              <img src="assets/img/icon2.png" alt="" />Total Time
+              {{doc.exer.duration}} min
+            </li>
+          </ul>
+        </div>
+        <h3 class="completed" *ngIf="doc.completed_status == '1'">
+          Completed <span class="online_icon"></span>
+        </h3>
+      </ion-card-content>
+      <div content-sec1>
+        <ul>
+          <li class="calBox">
+            <a (click)="checkSubs('reschedule',doc, i)">Reschedule</a>
+            <span> | </span>
+            <a (click)="checkSubs('delete',doc, i)" href="javascript: void(0)"
+              >Delete</a
+            >
+          </li>
+        </ul>
+      </div>
+    </ion-card>
+
+    <div norecord *ngIf="response?.data?.length == 0">No record found.</div>
+  </div>
+</ion-content>

@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-back-button
+      text=""
+      icon="chevron-back-outline"
+      slot="start"
+      
+    >
+    </ion-back-button>
+    <ion-title class="ion-text-center">{{exercises?.data?.title}}</ion-title>
+    <ion-icon
+      name="add-circle-outline"
+      slot="end"
+      (click)="presentAlertConfirm()"
+    ></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div workingdetails *ngIf="exercises?.exercisesDetails?.length > 0">
+    <ion-list style="padding: 20px">
+      <ion-item-sliding #itemSliding
+        *ngFor="let doc of exercises?.exercisesDetails;let i = index;"
+      >
+        <ion-item-options side="end">
+          <ion-item-option class="swipableoption" (click)="deleteAlertConfirm(doc, i)"
+            >Delete</ion-item-option
+          >
+        </ion-item-options>
+        <ion-item lines="none" (click)="gotoexercise(doc)">
+          <ion-thumbnail slot="start">
+            <img src="{{IMAGES_URL + doc.image}}" alt="" />
+          </ion-thumbnail>
+          <ion-label>
+            <h4>{{doc.title}}</h4>
+          </ion-label>
+          <span class="arrow-ri"
+            ><ion-icon name="chevron-forward-outline"></ion-icon>
+          </span>
+        </ion-item>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
+  <div norecord *ngIf="exercises?.exercisesDetails?.length == 0">
+    No exercise added yet
+  </div>
+</ion-content>

@@ -1,0 +1,53 @@
+ion-tab-bar
+{
+	background: #17181a;
+	box-shadow: 0px 0px 10px rgba(255,255,255,0.1);
+	ion-tab-button
+	{
+		background: #17181a;
+		ion-icon
+		{
+		    color: #b1b1b1;
+			font-size: 22px;
+			
+		}
+		&[homeactive] 
+		{
+			width: 50px;
+			height: 50px;
+			background: var(--ion-color-primary)!important;
+			min-width: 50px;
+			max-width: 50px;
+			min-height: 50px;
+			max-height: 50px;
+			border-radius: 50%;
+			ion-icon
+			{
+			    color: var(--ion-color-white)!important;
+				font-size: 24px;					
+			}				
+		}	 
+	    &.tab-selected
+	    {	
+			ion-icon
+			{
+				color: var(--ion-color-primary);
+			}	
+
+	  
+	    }	
+	    	&.active{
+
+				ion-icon
+				{
+					color: var(--ion-color-primary) !important;
+				}
+			}  
+	}
+}
+
+.popupactive{
+	color: var(--ion-color-primary) !important;
+}
+
+

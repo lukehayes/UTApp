@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-back-button
+      text=""
+      icon="chevron-back-outline"
+      slot="start"
+      routerLink="/signup"
+    ></ion-back-button>
+    <ion-title class="ion-text-center">Which one are you?</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <div gender>
+    <div radiomain>
+      <div radiolist>
+        <div radioinner (click)="getGender('Male')">
+          <input
+            type="radio"
+            id="radio01"
+            name="radio"
+            style="display: none"
+            value=""
+          />
+          <label for="radio01">
+            <div imggender>
+              <img src="assets/img/male1.png" />
+            </div>
+          </label>
+        </div>
+        <div radioinner (click)="getGender('Female')">
+          <input
+            type="radio"
+            id="radio02"
+            name="radio"
+            style="display: none"
+            value=""
+          />
+          <label for="radio02">
+            <div imggender>
+              <img src="assets/img/female1.png" />
+            </div>
+          </label>
+        </div>
+      </div>
+    </div>
+    <p>To give you a customize experience we need to know your gender</p>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-button
+    color="primary"
+    shape="round"
+    expand="full"
+    (click)="submit('choose')"
+  >
+    Next
+  </ion-button>
+  <p (click)="submit('notchoose')">Prefer not to choose</p>
+</ion-footer>

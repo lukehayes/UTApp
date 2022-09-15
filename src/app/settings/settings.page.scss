@@ -1,0 +1,103 @@
+ion-header {
+	&:after {
+		display: none;
+	}
+	ion-toolbar {
+		--border-width: 0px;
+		--background: var(--ion-color-gradient)!important;
+		--ion-color-base: var(--ion-color-gradient)!important;
+		ion-back-button {
+			--icon-font-size: 25px;
+			color: var(--ion-color-white);
+      position: relative;
+      left: 15px;
+		}
+		ion-title {
+			font-size: 16px;
+			font-weight: 600;
+			color: var(--ion-color-white);
+		}
+	}
+}
+
+ion-content {
+	--background: var(--ion-color-black);
+	[settings] {
+    ion-item{
+      &:last-child{
+        border-bottom: 0;
+      }
+    }
+		[userinfo] {
+			margin-bottom: 10px;
+			--background: transparent;
+			ion-avatar {
+				width: 85px;
+				height: 85px;
+				border: 1px solid var(--ion-color-dark);
+				padding: 2px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				img {
+					width: 80px;
+					height: 80px;
+					border: 2px solid var(--ion-color-dark);
+				}
+			}
+			ion-label {
+				margin-left: 15px;
+				h2 {
+					color: var(--ion-color-white);
+					font-size: 14px;
+					font-weight: 600;
+					margin-bottom: 0px;
+					line-height: 24px;
+				}
+				p {
+					color: rgba(255, 255, 255, 0.75);
+					font-size: 12px;
+					font-weight: 400;
+					line-height: 21px;
+					margin-bottom: 0px;
+				}
+			}
+		}
+		[menulinks] {
+			margin-bottom: 10px;
+			--background: transparent;
+			border-radius: 0;
+			--border-radius: 0;
+			--padding-top: 3px;
+			--padding-bottom: 3px;
+      --padding-start:3px;
+      --padding-end:3px;
+      border-bottom: 1px solid #191919;
+      --ion-safe-area-right:0;
+			[iconleft] {
+				background: var(--ion-color-gradient);
+				width: 33px;
+				height: 33px;
+				border-radius: 12.5px 0px 12.5px 0px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin-right: 15px;
+				img {
+					height: 17px;
+				}
+			}
+			ion-label {
+				h2 {
+					color: var(--ion-color-white);
+					font-size: 14px;
+				}
+			}
+			ion-buttons {
+				color: var(--ion-color-white);
+				margin-left: 10px;
+        margin-inline: 0;
+			}
+		}
+	}
+}

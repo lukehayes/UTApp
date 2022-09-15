@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-back-button
+      text=""
+      icon="chevron-back-outline"
+      slot="start"
+      routerLink="/tabs/settings"
+    >
+    </ion-back-button>
+    <ion-title class="ion-text-center">My Workouts</ion-title>
+    <ion-icon
+      name="add-circle-outline"
+      slot="end"
+      (click)="presentAlertConfirm('', '', 'add')"
+    ></ion-icon>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-list *ngIf="response?.data?.length > 0">
+    <!-- <ion-item lines="none" routerLink="/exercises/{{doc._id}}" *ngFor="let doc of response?.data;let i = index;" (click)="gotoexercise(doc)"> -->
+    <ion-item-sliding
+      #itemSliding
+      *ngFor="let doc of response?.data;let i = index;"
+    >
+      <ion-item-options side="end">
+        <ion-item-option
+          class="swipableoption"
+          (click)="presentAlertConfirm(doc, i, 'edit')"
+          >Edit</ion-item-option
+        >
+        <ion-item-option
+          class="swipableoption"
+          (click)="deleteAlertConfirm(doc, i)"
+          >Delete</ion-item-option
+        >
+      </ion-item-options>
+
+      <ion-item lines="none">
+        <ion-label>
+          <h4 routerLink="/my-workout-exercises/{{doc._id}}">{{doc.title}}</h4>
+        </ion-label>
+        <span class="arrow-ri" routerLink="/my-workout-exercises/{{doc._id}}"
+          ><ion-icon name="chevron-forward-outline"></ion-icon>
+        </span>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
+  <div norecord *ngIf="response?.data?.length == 0">No record found.</div>
+</ion-content>

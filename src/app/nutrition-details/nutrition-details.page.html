@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-back-button
+      text=""
+      icon="chevron-back-outline"
+      slot="start"
+      defaultHref="/tabs/nutrition"
+    >
+    </ion-back-button>
+    <ion-title class="ion-text-center">Nutrition Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div nutrition-detail-sec>
+    <ion-card>
+      <img src="assets/img/noimage.png" alt="" *ngIf="detail?.image == ''" />
+      <img
+        src="{{IMAGES_URL + detail?.image}}"
+        alt=""
+        *ngIf="detail?.image != ''"
+      />
+      <div nutritionplan>
+        <h3>{{detail?.title}}</h3>
+        <p>{{detail?.serving}} Serving ,{{detail?.cal}} Cal</p>
+      </div>
+    </ion-card>
+    <div workout-content>
+      <h2 main-head>{{detail?.sub_title}}</h2>
+      <p [innerHTML]="detail?.description"></p>
+    </div>
+    <div nutrition-tagsec>
+      <span>Calories : {{detail?.calories}}</span>
+      <span>Fat : {{detail?.fat}}</span>
+      <span>Protein : {{detail?.protien}}</span>
+      <span>Carbohydrate : {{detail?.carbs}}</span>
+      <span>Cholesterol : {{detail?.cholestrol}}</span>
+    </div>
+    <div nutritionplan-img *ngIf="detail?.ingredients?.length > 0">
+      <h2 main-head>Ingredients</h2>
+      <ion-slides pager="false" [options]="slideOpts">
+        <ion-slide *ngFor="let img of detail?.ingredients">
+          <div workout-sec>
+            <div workout-img>
+              <img src="{{IMAGES_URL + img}}" alt="" />
+            </div>
+          </div>
+        </ion-slide>
+      </ion-slides>
+    </div>
+  </div>
+</ion-content>

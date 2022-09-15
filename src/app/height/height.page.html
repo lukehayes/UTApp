@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-back-button
+      text=""
+      icon="chevron-back-outline"
+      slot="start"
+      routerLink="/age"
+    ></ion-back-button>
+    <ion-title class="ion-text-center">What’s your height?</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <div centerDiv>
+    <img src="assets/img/height.png" imgWidth />
+    <div (click)="showPicker()" class="agepicker">
+      <span *ngIf="height == ''">Select Your Height</span>
+      <span *ngIf="height != ''">{{height}}</span>
+      <ion-icon name="chevron-down-outline"></ion-icon>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-button (click)="submit()" color="primary" shape="round" expand="full">
+    Next
+  </ion-button>
+</ion-footer>

@@ -1,0 +1,471 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-back-button
+      text=""
+      icon="chevron-back-outline"
+      slot="start"
+      routerLink="/tabs/settings"
+    ></ion-back-button>
+    <ion-title class="ion-text-center">Health</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="healthBg"><img src="assets/img/workout-rafiki.png" /></div>
+  <div profiledetails>
+    <div class="health-pfl">
+      <div userimg>
+        <img
+          *ngIf="errors.indexOf(profile?.data?.image) == -1"
+          [src]="IMAGES_URL + profile?.data?.image"
+        />
+       
+        <img
+          *ngIf="errors.indexOf(profile?.data?.image) >= 0"
+          [src]="'/assets/img/default.png'"
+        />
+      </div>
+      <h3>{{profile?.data?.name}}</h3>
+      <span class="editBtn" (click)="editable = false"
+        ><ion-icon name="create-outline"></ion-icon
+      ></span>
+    </div>
+    <ion-list style="padding: 0 20px 0 20px">
+      <form [formGroup]="authForm">
+        <div formgroup>
+          <label>Heart Rate</label>
+          <ion-item lines="none" class="ion-no-padding">
+            <ion-input
+              *ngIf="!editable"
+              [ngClass]="!editable ? 'edit' : ''"
+              type="text"
+              [disabled]="editable"
+              placeholder="Enter Heart Rate"
+              formControlName="heart_rate"
+            >
+            </ion-input>
+            <div editable *ngIf="editable">
+              {{errors.indexOf(authForm.value.heart_rate) == -1 ?
+              authForm.value.heart_rate : "-"}}
+            </div>
+          </ion-item>
+          <span error *ngIf="isControlHasError('heart_rate','required')"
+            >Please enter heart rate</span
+          >
+        </div>
+        <div formgroup>
+          <label>Blood Pressure</label>
+          <ion-item lines="none" class="ion-no-padding">
+            <ion-input
+              *ngIf="!editable"
+              [ngClass]="!editable ? 'edit' : ''"
+              type="text"
+              [disabled]="editable"
+              placeholder="Enter Blood Pressure"
+              formControlName="bp"
+            >
+            </ion-input>
+            <div editable *ngIf="editable">
+              {{errors.indexOf(authForm.value.bp) == -1 ? authForm.value.bp :
+              "-"}}
+            </div>
+          </ion-item>
+          <span error *ngIf="isControlHasError('bp','required')"
+            >Please enter blood pressure</span
+          >
+        </div>
+        <div formgroup>
+          <label>Height</label>
+          <ion-item lines="none" class="ion-no-padding">
+            <ion-input
+              *ngIf="!editable"
+              [ngClass]="!editable ? 'edit' : ''"
+              type="text"
+              [disabled]="editable"
+              placeholder="Enter Height"
+              formControlName="height"
+            >
+            </ion-input>
+            <div editable *ngIf="editable">
+              {{errors.indexOf(authForm.value.height) == -1 ?
+              authForm.value.height : "-"}}
+            </div>
+          </ion-item>
+          <span error *ngIf="isControlHasError('height','required')"
+            >Please enter height</span
+          >
+        </div>
+        <div formgroup>
+          <label>Weight</label>
+          <ion-item lines="none" class="ion-no-padding">
+            <ion-input
+              *ngIf="!editable"
+              [ngClass]="!editable ? 'edit' : ''"
+              type="text"
+              [disabled]="editable"
+              placeholder="Enter Weight"
+              formControlName="weight"
+            >
+            </ion-input>
+            <div editable *ngIf="editable">
+              {{errors.indexOf(authForm.value.weight) == -1 ?
+              authForm.value.weight : "-"}}
+            </div>
+          </ion-item>
+          <span error *ngIf="isControlHasError('weight','required')"
+            >Please enter weight</span
+          >
+        </div>
+        <div formgroup>
+          <label>Pulse Rate</label>
+          <ion-item lines="none" class="ion-no-padding">
+            <ion-input
+              *ngIf="!editable"
+              [ngClass]="!editable ? 'edit' : ''"
+              type="text"
+              [disabled]="editable"
+              placeholder="Enter Pulse Rate"
+              formControlName="pulse_rate"
+            >
+            </ion-input>
+            <div editable *ngIf="editable">
+              {{errors.indexOf(authForm.value.pulse_rate) == -1 ?
+              authForm.value.pulse_rate : "-"}}
+            </div>
+          </ion-item>
+          <span error *ngIf="isControlHasError('pulse_rate','required')"
+            >Please enter pulse rate</span
+          >
+        </div>
+        <div formgroup>
+          <label>Calories</label>
+          <ion-item lines="none" class="ion-no-padding">
+            <ion-input
+              *ngIf="!editable"
+              [ngClass]="!editable ? 'edit' : ''"
+              type="text"
+              [disabled]="editable"
+              placeholder="Enter Calories"
+              formControlName="calories"
+            >
+            </ion-input>
+            <div editable *ngIf="editable">
+              {{errors.indexOf(authForm.value.calories) == -1 ?
+              authForm.value.calories : "-"}}
+            </div>
+          </ion-item>
+          <span error *ngIf="isControlHasError('calories','required')"
+            >Please enter calories</span
+          >
+        </div>
+        <div formgroup>
+          <label>Neck</label>
+          <ion-item lines="none" class="ion-no-padding">
+            <ion-input
+              *ngIf="!editable"
+              [ngClass]="!editable ? 'edit' : ''"
+              type="text"
+              [disabled]="editable"
+              placeholder="Enter Neck"
+              formControlName="neck"
+            >
+            </ion-input>
+            <div editable *ngIf="editable">
+              {{errors.indexOf(authForm.value.neck) == -1 ? authForm.value.neck
+              : "-"}}
+            </div>
+          </ion-item>
+          <span error *ngIf="isControlHasError('neck','required')"
+            >Please enter neck</span
+          >
+        </div>
+        <div formgroup>
+          <label>Shoulder</label>
+          <ion-item lines="none" class="ion-no-padding">
+            <ion-input
+              *ngIf="!editable"
+              [ngClass]="!editable ? 'edit' : ''"
+              type="text"
+              [disabled]="editable"
+              placeholder="Enter Shoulder"
+              formControlName="shoulder"
+            >
+            </ion-input>
+            <div editable *ngIf="editable">
+              {{errors.indexOf(authForm.value.shoulder) == -1 ?
+              authForm.value.shoulder : "-"}}
+            </div>
+          </ion-item>
+          <span error *ngIf="isControlHasError('shoulder','required')"
+            >Please enter shoulder</span
+          >
+        </div>
+        <div formgroup>
+          <label>Bust</label>
+          <ion-item lines="none" class="ion-no-padding">
+            <ion-input
+              *ngIf="!editable"
+              [ngClass]="!editable ? 'edit' : ''"
+              type="text"
+              [disabled]="editable"
+              placeholder="Enter Bust"
+              formControlName="bust"
+            >
+            </ion-input>
+            <div editable *ngIf="editable">
+              {{errors.indexOf(authForm.value.bust) == -1 ? authForm.value.bust
+              : "-"}}
+            </div>
+          </ion-item>
+          <span error *ngIf="isControlHasError('bust','required')"
+            >Please enter bust</span
+          >
+        </div>
+        <div formgroup>
+          <label>Waist</label>
+          <ion-item lines="none" class="ion-no-padding">
+            <ion-input
+              *ngIf="!editable"
+              [ngClass]="!editable ? 'edit' : ''"
+              type="text"
+              [disabled]="editable"
+              placeholder="Enter Waist"
+              formControlName="waist"
+            >
+            </ion-input>
+            <div editable *ngIf="editable">
+              {{errors.indexOf(authForm.value.waist) == -1 ?
+              authForm.value.waist : "-"}}
+            </div>
+          </ion-item>
+          <span error *ngIf="isControlHasError('waist','required')"
+            >Please enter waist</span
+          >
+        </div>
+        <div formgroup>
+          <label>Abdomen</label>
+          <ion-item lines="none" class="ion-no-padding">
+            <ion-input
+              *ngIf="!editable"
+              [ngClass]="!editable ? 'edit' : ''"
+              type="text"
+              [disabled]="editable"
+              placeholder="Enter Abdomen"
+              formControlName="abdomen"
+            >
+            </ion-input>
+            <div editable *ngIf="editable">
+              {{errors.indexOf(authForm.value.abdomen) == -1 ?
+              authForm.value.abdomen : "-"}}
+            </div>
+          </ion-item>
+          <span error *ngIf="isControlHasError('abdomen','required')"
+            >Please enter abdomen</span
+          >
+        </div>
+        <div formgroup>
+          <label>Hips</label>
+          <ion-item lines="none" class="ion-no-padding">
+            <ion-input
+              *ngIf="!editable"
+              [ngClass]="!editable ? 'edit' : ''"
+              type="text"
+              [disabled]="editable"
+              placeholder="Enter Hips"
+              formControlName="hips"
+            >
+            </ion-input>
+            <div editable *ngIf="editable">
+              {{errors.indexOf(authForm.value.hips) == -1 ? authForm.value.hips
+              : "-"}}
+            </div>
+          </ion-item>
+          <span error *ngIf="isControlHasError('hips','required')"
+            >Please enter hips</span
+          >
+        </div>
+        <div formgroup>
+          <label>Left Bicep</label>
+          <ion-item lines="none" class="ion-no-padding">
+            <ion-input
+              *ngIf="!editable"
+              [ngClass]="!editable ? 'edit' : ''"
+              type="text"
+              [disabled]="editable"
+              placeholder="Enter Left Bicep"
+              formControlName="biceps_left"
+            >
+            </ion-input>
+            <div editable *ngIf="editable">
+              {{errors.indexOf(authForm.value.biceps_left) == -1 ?
+              authForm.value.biceps_left : "-"}}
+            </div>
+          </ion-item>
+          <span error *ngIf="isControlHasError('biceps_left','required')"
+            >Please enter left bicep</span
+          >
+        </div>
+        <div formgroup>
+          <label>Right Bicep</label>
+          <ion-item lines="none" class="ion-no-padding">
+            <ion-input
+              *ngIf="!editable"
+              [ngClass]="!editable ? 'edit' : ''"
+              type="text"
+              [disabled]="editable"
+              placeholder="Enter Right Bicep"
+              formControlName="biceps_right"
+            >
+            </ion-input>
+            <div editable *ngIf="editable">
+              {{errors.indexOf(authForm.value.biceps_right) == -1 ?
+              authForm.value.biceps_right : "-"}}
+            </div>
+          </ion-item>
+          <span error *ngIf="isControlHasError('biceps_right','required')"
+            >Please enter right bicep</span
+          >
+        </div>
+        <div formgroup>
+          <label>Left Thigh</label>
+          <ion-item lines="none" class="ion-no-padding">
+            <ion-input
+              *ngIf="!editable"
+              [ngClass]="!editable ? 'edit' : ''"
+              type="text"
+              [disabled]="editable"
+              placeholder="Enter Left Thigh"
+              formControlName="thigh_left"
+            >
+            </ion-input>
+            <div editable *ngIf="editable">
+              {{errors.indexOf(authForm.value.thigh_left) == -1 ?
+              authForm.value.thigh_left : "-"}}
+            </div>
+          </ion-item>
+          <span error *ngIf="isControlHasError('thigh_left','required')"
+            >Please enter left thigh</span
+          >
+        </div>
+        <div formgroup>
+          <label>Right Thigh</label>
+          <ion-item lines="none" class="ion-no-padding">
+            <ion-input
+              *ngIf="!editable"
+              [ngClass]="!editable ? 'edit' : ''"
+              type="text"
+              [disabled]="editable"
+              placeholder="Enter Right Thigh"
+              formControlName="thigh_right"
+            >
+            </ion-input>
+            <div editable *ngIf="editable">
+              {{errors.indexOf(authForm.value.thigh_right) == -1 ?
+              authForm.value.thigh_right : "-"}}
+            </div>
+          </ion-item>
+          <span error *ngIf="isControlHasError('thigh_right','required')"
+            >Please enter right thigh</span
+          >
+        </div>
+        <div formgroup>
+          <label>Left Calf</label>
+          <ion-item lines="none" class="ion-no-padding">
+            <ion-input
+              *ngIf="!editable"
+              [ngClass]="!editable ? 'edit' : ''"
+              type="text"
+              [disabled]="editable"
+              placeholder="Enter Left Calf"
+              formControlName="calf_left"
+            >
+            </ion-input>
+            <div editable *ngIf="editable">
+              {{errors.indexOf(authForm.value.calf_left) == -1 ?
+              authForm.value.calf_left : "-"}}
+            </div>
+          </ion-item>
+          <span error *ngIf="isControlHasError('calf_left','required')"
+            >Please enter left calf</span
+          >
+        </div>
+        <div formgroup>
+          <label>Right Calf</label>
+          <ion-item lines="none" class="ion-no-padding">
+            <ion-input
+              *ngIf="!editable"
+              [ngClass]="!editable ? 'edit' : ''"
+              type="text"
+              [disabled]="editable"
+              placeholder="Enter Right Calf"
+              formControlName="calf_right"
+            >
+            </ion-input>
+            <div editable *ngIf="editable">
+              {{errors.indexOf(authForm.value.calf_right) == -1 ?
+              authForm.value.calf_right : "-"}}
+            </div>
+          </ion-item>
+          <span error *ngIf="isControlHasError('calf_right','required')"
+            >Please enter right calf</span
+          >
+        </div>
+        <div formgroup>
+          <label>Waist Hip Ratio</label>
+          <ion-item lines="none" class="ion-no-padding">
+            <ion-input
+              *ngIf="!editable"
+              [ngClass]="!editable ? 'edit' : ''"
+              type="text"
+              [disabled]="editable"
+              placeholder="Enter Waist Hip Ratio"
+              formControlName="waist_hip_ratio"
+            >
+            </ion-input>
+            <div editable *ngIf="editable">
+              {{errors.indexOf(authForm.value.waist_hip_ratio) == -1 ?
+              authForm.value.waist_hip_ratio : "-"}}
+            </div>
+          </ion-item>
+          <span error *ngIf="isControlHasError('waist_hip_ratio','required')"
+            >Please enter waist hip ratio</span
+          >
+        </div>
+
+        <div formgroup>
+          <label>Any Known Illness</label>
+          <ion-item lines="none" class="ion-no-padding">
+            <ion-input
+              *ngIf="!editable"
+              [ngClass]="!editable ? 'edit' : ''"
+              type="text"
+              [disabled]="editable"
+              placeholder="Enter Any Known Illness"
+              formControlName="known_illness"
+            >
+            </ion-input>
+            <div editable *ngIf="editable">
+              {{errors.indexOf(authForm.value.known_illness) == -1 ?
+              authForm.value.known_illness : "-"}}
+            </div>
+          </ion-item>
+          <span error *ngIf="isControlHasError('known_illness','required')"
+            >Please enter any known illness</span
+          >
+        </div>
+
+        <ion-button
+          *ngIf="!editable"
+          type="button"
+            (click)="submit()"
+          color="primary"
+          activity
+          shape="round"
+          expand="full"
+        >
+          Submit
+        </ion-button>
+      </form>
+    </ion-list>
+  </div>
+</ion-content>

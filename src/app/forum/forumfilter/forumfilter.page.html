@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-left"><div> Add Forum</div></ion-title>
+    <ion-buttons slot="end" (click)="dismiss()"><ion-icon name="close-outline"></ion-icon></ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="p8">
+  <form  [formGroup]="authForm">
+    <ion-list lines="none">
+      <ion-item lines="none" class="ion-no-padding">
+        <ion-input type="text" placeholder="Title....." name="name" autocapitalize="off" required formControlName="title">
+        </ion-input>
+      </ion-item>
+      <span error *ngIf="isControlHasError('title','required')">Please enter title</span>
+    </ion-list>
+
+    <ion-list lines="none">
+      <ion-item lines="none" class="ion-no-padding">
+        <ion-textarea placeholder="Description....." formControlName="description"> </ion-textarea>
+      </ion-item>
+      <span error *ngIf="isControlHasError('description','required')">Please enter description</span>
+    </ion-list>
+
+    <ion-button shape="round" class="round" color="primary" type="button"
+    (click)="submit()" expand="full">Post</ion-button>
+  </form>
+</ion-content>

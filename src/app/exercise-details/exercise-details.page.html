@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-back-button text="" icon="chevron-back-outline" slot="start">
+    </ion-back-button>
+    <ion-title class="ion-text-center">Exercise Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div Exercisedetail>
+    <ion-card class="ion-no-margin">
+      <video
+        width="100%"
+        height="240"
+        controls
+        src="{{IMAGES_URL + detail?.video}}"
+        id="mytest"
+        playsinline
+      ></video>
+      <div videocontent>
+        <h3>{{detail?.title}}</h3>
+        <p>{{detail?.sub_title}}</p>
+      </div>
+    </ion-card>
+    <div coursecontent>
+      <p><b>Note: </b>{{detail?.note}}</p>
+    </div>
+
+    <div id="contentToConvert">
+      <div workoutcount>
+        <h2 heading>Working Details</h2>
+        <ul>
+          <li>
+            <p>Duration :</p>
+            {{detail?.duration}} min
+          </li>
+          <li>
+            <p>Difficulty :</p>
+            {{detail?.difficulty}}
+          </li>
+          <li>
+            <p>Equipment :</p>
+            {{detail?.equipment}}
+          </li>
+          <li>
+            <p>Training Type :</p>
+            {{detail?.training_type}}
+          </li>
+          <li>
+            <p>Repeat :</p>
+            {{detail?.repeat}}
+          </li>
+          <li>
+            <p>Tempo :</p>
+            {{detail?.tempo}}
+          </li>
+          <li>
+            <p>Rest Time :</p>
+            {{detail?.reset_time}}
+          </li>
+        </ul>
+      </div>
+
+      <div workingdetails>
+        <h2 heading>Sets</h2>
+        <ul>
+          <li *ngFor="let doc of detail?.sets">
+            <ion-icon name="remove-outline"></ion-icon>
+            <p>Name : {{doc.name}}</p>
+            <p>Weight : {{doc.weight}}</p>
+            <p>Reps : {{doc.reps == '' ? '0' : doc.reps}}</p>
+          </li>
+        </ul>
+      </div>
+
+      <div workingdetails>
+        <h2 heading>Working Details</h2>
+        <ul>
+          <li *ngFor="let doc of detail?.working_details">
+            <ion-icon name="remove-outline"></ion-icon>
+            <p>{{doc}}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div detailbtn>
+    <ion-button (click)="download()"
+      ><img src="assets/img/video-download-icon.png" alt=""
+    /></ion-button>
+    <ion-button class="saveBtn" (click)="presentAlertConfirm()"
+      ><ion-icon name="save-outline"></ion-icon
+    ></ion-button>
+  </div>
+</ion-content>

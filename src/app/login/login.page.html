@@ -1,0 +1,77 @@
+<ion-content>
+  <div login>
+    <div logo>
+      <img src="assets/img/logo.png" />
+      <h1>Sign In To Continue</h1>
+    </div>
+    <form [formGroup]="authForm">
+      <div formgroup>
+        <ion-item lines="none" class="ion-no-padding">
+          <ion-label position="stacked">Email</ion-label>
+          <ion-input
+            type="email"
+            placeholder="Enter  Email Address"
+            formControlName="email"
+          >
+          </ion-input>
+          <ion-icon slot="end" name="checkmark-outline"></ion-icon>
+        </ion-item>
+
+        <span error *ngIf="isControlHasError('email','required')"
+          >Please enter email</span
+        >
+        <span error *ngIf="isControlHasError('email','pattern')"
+          >Please enter valid email</span
+        >
+      </div>
+      <div formgroup>
+        <ion-item lines="none" class="ion-no-padding" pwdicon>
+          <ion-label position="stacked">Password</ion-label>
+          <ion-input
+            style="z-index: 111; padding-right: 0px !important"
+            type="{{type}}"
+            placeholder="Enter  Password"
+            formControlName="password"
+          >
+          </ion-input>
+        </ion-item>
+        <button class="ico-eye" slot="end" *ngIf="type == 'password'">
+          <span>
+            <ion-icon name="eye-off" (click)="viewpass(type)"></ion-icon>
+          </span>
+        </button>
+
+        <button class="ico-eye" slot="end" *ngIf="type == 'text'">
+          <span>
+            <ion-icon name="eye" (click)="viewpass(type)"></ion-icon>
+          </span>
+        </button>
+        <span error *ngIf="isControlHasError('password','required')"
+          >Please enter password</span
+        >
+        <span error *ngIf="isControlHasError('password','pattern')"
+          >Password must contain atleast 6 characters.</span
+        >
+      </div>
+      <p forgotpwd>
+        <a href="javascript:void(0)" routerLink="/forgotpassword">
+          Forgot Your Password?</a
+        >
+      </p>
+      <ion-button
+        btn-login
+        type="button"
+        (click)="submit()"
+        color="primary"
+        shape="round"
+        expand="full"
+      >
+        Login
+      </ion-button>
+    </form>
+    <p signuptext>
+      Don’t have an account?
+      <a href="javascript:void(0)" routerLink="/signup"> Sign Up</a>
+    </p>
+  </div>
+</ion-content>

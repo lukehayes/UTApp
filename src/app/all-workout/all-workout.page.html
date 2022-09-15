@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-back-button
+      text=""
+      icon="chevron-back-outline"
+      slot="start"
+      defaultHref="/tabs/workoutselection/{{id}}"
+    >
+    </ion-back-button>
+    <ion-title class="ion-text-center">All Workout</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-list *ngIf="response?.data?.length > 0">
+    <ion-item
+      lines="none"
+      *ngFor="let doc of sub_category_list?.data;let i = index;"
+      (click)="gotoexercise(doc)"
+    >
+      <ion-thumbnail slot="start">
+        <img
+          src="{{IMAGES_URL + doc.image}}"
+          alt=""
+          *ngIf="errors.indexOf(doc.image) == -1"
+        />
+        <img
+          src="assets/img/noimage.png"
+          alt=""
+          *ngIf="errors.indexOf(doc.image) >= 0"
+        />
+      </ion-thumbnail>
+      <ion-label>
+        <h4>{{doc.title}}</h4>
+      </ion-label>
+      <span class="arrow-ri"
+        ><ion-icon name="chevron-forward-outline"></ion-icon>
+      </span>
+    </ion-item>
+  </ion-list>
+  <div *ngIf="response?.data?.length == 0" norecord>No record found</div>
+</ion-content>

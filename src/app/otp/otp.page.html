@@ -1,0 +1,41 @@
+<!--ion-header>
+  <ion-toolbar>
+    <ion-title>forgotpassword</ion-title>
+  </ion-toolbar>
+</ion-header-->
+
+<ion-content>
+  <div login>
+    <div logo>
+      <img src="assets/img/logo.png" />
+      <h1>Verify OTP</h1>
+      <p>Enter Verification Code we sent to your email</p>
+    </div>
+    <form [formGroup]="authForm">
+      <div formgroup>
+        <ion-item lines="none" class="ion-no-padding">
+          <ion-label position="stacked">OTP</ion-label>
+          <ion-input type="tel" placeholder="Enter OTP" formControlName="otp">
+          </ion-input>
+          <ion-icon slot="end" name="checkmark-outline"></ion-icon>
+        </ion-item>
+        <span error *ngIf="isControlHasError('otp','required')"
+          >Please enter OTP</span
+        >
+        <span error *ngIf="isControlHasError('otp','pattern')"
+          >Only numbers are allowed</span
+        >
+      </div>
+      <ion-button
+        btn-login
+        type="button"
+            (click)="submit()"
+        color="primary"
+        shape="round"
+        expand="full"
+      >
+        Verify
+      </ion-button>
+    </form>
+  </div>
+</ion-content>

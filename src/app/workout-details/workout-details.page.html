@@ -1,0 +1,110 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-back-button
+      text=""
+      icon="chevron-back-outline"
+      slot="start"
+      defaultHref="/exercises/{{workout_id}}"
+    >
+    </ion-back-button>
+    <ion-title class="ion-text-center">Workout Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div Exercisedetail>
+    <div class="ion-no-margin detailW">
+      <!-- <img src="assets/img/exerciseimg1.jpg"/> -->
+      <!--  <video width="100%" height="240" controls src="{{IMAGES_URL + detail?.video}}" id="mytest">
+			</video> -->
+      <div videocontent>
+        <h3>{{detail?.title}}</h3>
+        <p>{{detail?.sub_title}}</p>
+      </div>
+    </div>
+    <div coursecontent>
+      <p><strong>Note: </strong>{{detail?.description}}</p>
+    </div>
+
+    <div id="contentToConvert">
+      <div workoutcount>
+        <h2 heading>Working Details</h2>
+        <ul>
+          <li>
+            <p>Duration :</p>
+            {{detail?.duration}}
+          </li>
+          <li>
+            <p>Difficulty :</p>
+            {{detail?.difficulty}}
+          </li>
+          <li>
+            <p>Equipment :</p>
+            {{detail?.equipment}}
+          </li>
+          <li>
+            <p>Training Type :</p>
+            {{detail?.training_type}}
+          </li>
+          <li>
+            <p>Sets :</p>
+            {{detail?.sets}}
+          </li>
+          <li>
+            <p>Repeat :</p>
+            {{detail?.repeat}}
+          </li>
+          <li>
+            <p>Tempo :</p>
+            {{detail?.tempo}}
+          </li>
+          <li>
+            <p>Rest Time :</p>
+            {{detail?.reset_time}}
+          </li>
+        </ul>
+      </div>
+      <div workingdetails>
+        <h2 heading>Working Details</h2>
+        <ul>
+          <li *ngFor="let doc of detail?.working_details">
+            <ion-icon name="remove-outline"></ion-icon>
+            <p>{{doc}}</p>
+          </li>
+        </ul>
+      </div>
+
+      <div workingdetails>
+        <h2 heading>Exercises</h2>
+        <ion-list *ngIf="detail?.exercises?.length > 0">
+          <ion-item
+            lines="none"
+            *ngFor="let doc of detail?.exercises;let i = index;"
+            (click)="gotoexercise(doc)"
+          >
+            <ion-thumbnail slot="start">
+              <img src="{{IMAGES_URL + doc.image}}" alt="" />
+            </ion-thumbnail>
+
+            <ion-label>
+              <h4>{{doc.title}}</h4>
+            </ion-label>
+            <ion-badge *ngIf="doc.bonus_video == '1'"> Bonus</ion-badge>
+            <span class="arrow-ri"
+              ><ion-icon name="chevron-forward-outline"></ion-icon>
+            </span>
+          </ion-item>
+        </ion-list>
+
+        <ion-list noexercise *ngIf="detail?.exercises?.length == 0">
+          No exercise found.
+        </ion-list>
+      </div>
+    </div>
+  </div>
+
+  <div detailbtn *ngIf="detail?.exercises?.length > 0">
+    <ion-button class="saveBtn" (click)="popup()"
+      ><span>Start Workout</span></ion-button
+    >
+  </div>
+</ion-content>

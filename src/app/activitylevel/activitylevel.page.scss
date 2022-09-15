@@ -1,0 +1,123 @@
+ion-header
+{
+	&:after
+	{
+	    display:none;
+	}
+    ion-toolbar
+    {
+		--border-width:0px;
+		ion-back-button 
+		{
+			--icon-font-size: 25px;
+			color: var(--ion-color-white);
+		}
+		ion-title
+		{
+			font-size: 16px;
+			font-weight: 600;
+			color: var(--ion-color-white);
+		}
+    }
+}
+ion-content
+{
+	--background:var(--ion-color-black);
+	[checkboxsec]
+	{
+	    display: flex;
+		align-items: center;
+	    min-height: 100%;	
+		[checkboxlist]
+		{
+			padding: 20px 15px;
+			width: 100%;
+			[checkboxinner]
+			{  
+				margin-bottom:20px;
+				label 
+				{  
+					font-size: 14px;
+					border-radius: 18px;
+					color: var(--ion-color-white);
+					width: 100%;
+					height: 84px;
+					padding: 0px 45px 0 25px;
+					font-weight: 600;
+					display: flex;
+					align-items: center;
+					position:relative;
+					[iconleft]
+					{
+						margin-right:15px;
+						height:30px;
+					}
+					[checkboxbtn]
+					{
+						position: absolute;
+						right: 20px;
+						width: 25px;
+						height: 25px;
+						display: inline-flex;
+						align-items: center;
+						justify-content: center;
+						background: var(--ion-color-white);
+						border-radius: 7px;
+						ion-icon
+						{
+							opacity:0;
+							font-size: 22px;
+							color: var(--ion-color-primary);
+						}
+					}
+					&[colorbg1]
+					{
+					    background: var(--ion-color-primary);
+					}
+					&[colorbg2]
+					{
+					    background: #ff8756;
+					}
+					&[colorbg3]
+					{
+					    background: #ffab88;
+					}
+				}
+				input[type="radio"]:checked + label
+				{
+					[checkboxbtn]
+					{
+						ion-icon
+						{
+							opacity:1;
+						}
+					}
+				}
+			}
+		
+		}	
+	}	
+}
+ion-footer
+{
+    background:var(--ion-color-black);
+	padding:15px;
+	&:before
+	{
+		display:none;
+	}
+	ion-button
+	{
+	    --box-shadow: none;
+	    min-height: 57px;
+	    --background: var(--ion-color-primary);
+	    --ion-color-base: var(--ion-color-primary)!important;
+	    --border-radius: 15px;
+	    color: var(--ion-color-white);
+	    font-size: 14px;
+	    font-weight: 600;
+	    margin: 0 auto;
+	    text-transform:capitalize;
+	    width: calc(100% - 55px);	
+	}
+}	

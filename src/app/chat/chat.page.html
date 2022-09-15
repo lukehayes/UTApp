@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-back-button
+      text=""
+      icon="chevron-back-outline"
+      slot="start"
+      routerLink="/tabs/settings"
+    >
+    </ion-back-button>
+    <ion-item lines="none">
+      <ion-avatar>
+        <img src="{{IMAGES_URL + admin?.image}}" />
+
+        <span></span>
+      </ion-avatar>
+      <ion-label>
+        <h2>{{admin?.name}}</h2>
+      </ion-label>
+    </ion-item>
+    <ion-buttons searchicon slot="end" (click)="toggleClass()">
+      <ion-icon name="search-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+  <div *ngIf="hideMe" search>
+    <ion-buttons backicon slot="end" (click)="toggleClass()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-buttons>
+    <ion-searchbar mode="md" placeholder="Search..."></ion-searchbar>
+  </div>
+</ion-header>
+<ion-content>
+  <div class="main_content_div">
+    <span *ngFor="let doc of messageList; let i = index;">
+      <!-- For Right -->
+      <div class="right_div" *ngIf="doc.recieverId != userId">
+        <div class="inner_div">
+          <div rightBox>
+            <div class="msg_div">
+              <ion-label>{{doc.message}}</ion-label>
+            </div>
+            <span>{{timeSince(doc.created_on)}}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- For Left -->
+      <div class="left_div" *ngIf="doc.recieverId == userId">
+        <div class="inner_div">
+          <div rightBox>
+            <div class="msg_div">
+              <ion-label>{{doc.message}}</ion-label>
+            </div>
+            <span>{{timeSince(doc.created_on)}}</span>
+          </div>
+        </div>
+      </div>
+    </span>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-item lines="none">
+    <ion-input placeholder="Text message..." [(ngModel)]="message"></ion-input>
+    <ion-button (click)="sendMessage(message)">
+      <ion-icon name="send"></ion-icon>
+    </ion-button>
+  </ion-item>
+</ion-footer>

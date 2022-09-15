@@ -1,0 +1,137 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-back-button
+      slot="start"
+      routerLink="/tabs/settings"
+      text=""
+      icon="chevron-back-outline"
+    ></ion-back-button>
+    <ion-title class="ion-text-center">Forum</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <div hrbottom *ngFor="let doc of forumList; let i = index;">
+    <ion-label>
+      <h1 routerLink="forumcomments/{{doc._id}}">{{doc.title}}</h1>
+    </ion-label>
+    <ion-item lines="none">
+      <ion-avatar routerLink="/viewprofile/{{doc.userId}}">
+        <img
+          src="assets/img/default.png"
+          *ngIf=" errors.indexOf(doc.userId) >= 0"
+        />
+        <ng-container *ngIf=" errors.indexOf(doc.userId) == -1">
+          <img
+            src="{{IMAGES_URL + doc.userinfo.image}}"
+            *ngIf="errors.indexOf(doc.userinfo.image) == -1"
+          />
+          <img
+            src="assets/img/default.png"
+            *ngIf="errors.indexOf(doc.userinfo.image) >= 0"
+          />
+        </ng-container>
+      </ion-avatar>
+      <ion-label routerLink="/viewprofile/{{doc.userId}}">
+        <p>
+          <b *ngIf=" errors.indexOf(doc.userId) >= 0">Admin</b>
+          <b *ngIf=" errors.indexOf(doc.userId) == -1">{{doc.userinfo.name}}</b>
+          <!-- Annserd 11 m ago -->
+          {{timeSince(doc.created_on)}}
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-text>
+        <p hidden [innerHTML]="doc.description" #whatsNew></p>
+        <p routerLink="forumcomments/{{doc._id}}">
+          {{ getInnerText(whatsNew)?.length > 150 ? (getInnerText(whatsNew) |
+          slice:0:150) +'...' : getInnerText(whatsNew) }}
+          <span
+            routerLink="forumcomments/{{doc._id}}"
+            *ngIf="getInnerText(whatsNew)?.length > 150"
+            style="font-weight: 600; color: #fc6b2f"
+          >
+            see more
+          </span>
+        </p>
+      </ion-text>
+    </ion-item>
+    <ion-item lines="none" class="ion-no-padding" likesBox>
+      <ion-label>
+        <span (click)="add_like(doc, i)">
+          <ion-icon name="heart-outline" *ngIf="doc.like == 0"></ion-icon>
+          <ion-icon name="heart" *ngIf="doc.like == 1"></ion-icon>
+          {{doc.like_count}}
+        </span>
+        <span ml5 routerLink="forumcomments/{{doc._id}}">
+          <ion-icon name="chatbubble-outline"></ion-icon> {{doc.comment_count}}
+        </span>
+      </ion-label>
+    </ion-item>
+  </div>
+
+  <div noforum *ngIf="forumList?.length == 0">No record found.</div>
+
+  <!-- <div hrbottom>
+    <ion-label>
+      <h1>Translation by H. Rackham </h1>
+    </ion-label>
+    <ion-item lines="none">
+      <ion-avatar><img src="assets/img/user3.jpg"/></ion-avatar>
+      <ion-label>
+          <p><b>Jane Cooper</b> Annserd 11 m ago
+          </p>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-text>
+        <p>I must explain to you how all this mistaken idea of pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the tremely painful.</p>
+      </ion-text>
+    </ion-item>
+    <ion-item lines="none" class="ion-no-padding" likesBox>
+      <ion-label>
+        <span>
+          <ion-icon name="heart"></ion-icon>  5,958
+          <ion-icon name="heart-outline"></ion-icon>
+        </span>
+        <span ml5 routerLink="forumcomments">
+          <ion-icon name="chatbubble-outline"></ion-icon> 1,200
+        </span>
+      </ion-label>
+    </ion-item>
+  </div>
+
+  <div hrbottom>
+    <ion-label>
+      <h1>Finibus Bonorum et Malorum </h1>
+    </ion-label>
+    <ion-item lines="none">
+      <ion-avatar><img src="assets/img/user5.jpg"/></ion-avatar>
+      <ion-label>
+          <p><b>Beck Russell</b> Annserd 11 m ago
+          </p>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-text>
+        <p>I must explain to you how all this mistaken idea of pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the tremely painful.</p>
+      </ion-text>
+    </ion-item>
+    <ion-item lines="none" class="ion-no-padding" likesBox>
+      <ion-label>
+        <span>
+          <ion-icon name="heart"></ion-icon>  5,958
+        </span>
+        <span ml5 routerLink="forumcomments">
+          <ion-icon name="chatbubble-outline"></ion-icon> 1,200
+        </span>
+      </ion-label>
+    </ion-item>
+  </div> -->
+</ion-content>
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button (click)="presentModal()">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

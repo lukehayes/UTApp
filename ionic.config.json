@@ -1,0 +1,8 @@
+{
+  "name": "Unconventional Training",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}
